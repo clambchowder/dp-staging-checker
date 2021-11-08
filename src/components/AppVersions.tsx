@@ -1,5 +1,5 @@
-import { CircularProgress } from "@mui/material";
-import { DataGrid, GridColumns } from "@mui/x-data-grid";
+import { Chip, CircularProgress } from "@mui/material";
+import { DataGrid, GridColumns, GridRenderCellParams } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { getAppVersions, IAppVersionInfo, IAppVersionInfoRow } from "../services/app-versions";
 import { nameof } from "../utils";
@@ -28,17 +28,31 @@ const AppVersions = () => {
         {
             field: nameof<IAppVersionInfoRow>("name"),
             headerName: 'Name',
-            flex: 1,
+            width: 300
         },
         {
             field: nameof<IAppVersionInfoRow>("stageVersion"),
             headerName: 'Staging',
-            flex: 1,
+            width: 150,
+            renderCell: ({ row, value }: GridRenderCellParams<any, IAppVersionInfoRow, any>) => (
+                <Chip
+                    label={value}
+                    color={row.stageMatchesProd ? 'success' : 'warning'}
+                    variant={row.stageMatchesProd ? 'filled' : 'outlined'}
+                />
+            ),
         },
         {
             field: nameof<IAppVersionInfoRow>("prodVersion"),
             headerName: 'Prod',
-            flex: 1,
+            width: 150,
+            renderCell: ({ row, value }: GridRenderCellParams<any, IAppVersionInfoRow, any>) => (
+                <Chip
+                    label={value}
+                    color={'success'}
+                    variant={row.stageMatchesProd ? 'filled' : 'outlined'}
+                />
+            ),
         }
     ]
 
@@ -46,7 +60,8 @@ const AppVersions = () => {
         id: x.name,
         name: x.name,
         stageVersion: x.environments.stage,
-        prodVersion: x.environments.prod
+        prodVersion: x.environments.prod,
+        stageMatchesProd: x.stageMatchesProd
     }))
 
     return <div>

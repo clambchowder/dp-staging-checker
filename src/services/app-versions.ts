@@ -41,7 +41,7 @@ export interface IAppVersionInfoRow {
     stageVersion: string;
     prodVersion: string;
     // hasError: boolean;
-    // stageMatchesProd: boolean;
+    stageMatchesProd: boolean;
 }
 
 export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
