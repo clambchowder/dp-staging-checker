@@ -1,0 +1,182 @@
+[
+    {
+        "name": "v1",
+        "environments": {
+            "prod": "46813d74d6",
+            "stage": "2d0214c0da"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Agency",
+        "environments": {
+            "prod": "v1.4.32.17",
+            "stage": "v1.4.32.17"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Audit",
+        "environments": {
+            "prod": "v1.0.14.1",
+            "stage": "v1.0.15.0"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Auth",
+        "environments": {
+            "prod": "v0.3.22.3",
+            "stage": "v0.3.23.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Bind",
+        "environments": {
+            "prod": "v0.1.14.1",
+            "stage": "v0.1.15.4"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Communication",
+        "environments": {
+            "prod": "v3.0.17.9",
+            "stage": "v3.0.17.9"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Consumerid",
+        "environments": {
+            "prod": "v1.2.17.1",
+            "stage": "v1.2.17.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Content",
+        "environments": {
+            "prod": "v5.0.1.1",
+            "stage": "v5.0.1.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Externalid",
+        "environments": {
+            "prod": "v1.0.14.1",
+            "stage": "v1.0.14.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Jdpower",
+        "environments": {
+            "prod": "v0.2.4.7",
+            "stage": "v0.2.4.7"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Links",
+        "environments": {
+            "prod": "v0.3.5.5",
+            "stage": "v0.3.5.7"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Location",
+        "environments": {
+            "prod": "v4.2.4.2",
+            "stage": "v4.2.4.2"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Org",
+        "environments": {
+            "prod": "v2.0.7.2",
+            "stage": "v2.0.7.3"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Payments",
+        "environments": {
+            "prod": "v6.1.18.3",
+            "stage": "v6.1.18.7"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Search",
+        "environments": {
+            "prod": "v0.2.11.1",
+            "stage": "v0.2.11.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Rating",
+        "environments": {
+            "prod": "v14.1.30.10",
+            "stage": "v14.3.32.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": false
+    },
+    {
+        "name": "Reporting",
+        "environments": {
+            "prod": "v1.0.1.1",
+            "stage": "v1.0.1.1"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Surehits",
+        "environments": {
+            "prod": "v0.1.13.2",
+            "stage": "v0.1.13.2"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Travelers",
+        "environments": {
+            "prod": "v1.0.2.2",
+            "stage": "v1.0.2.2"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    },
+    {
+        "name": "Vehicleid",
+        "environments": {
+            "prod": "v4.4.1.10",
+            "stage": "v4.4.1.10"
+        },
+        "hasError": false,
+        "stageMatchesProd": true
+    }
+]
