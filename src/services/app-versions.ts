@@ -18,8 +18,19 @@ const applications = [
     }))
 ]
 
+export interface IEnvironmentValues {
+    prod: string;
+    stage: string;
+}
 
-export const hydrateData = async () => {
+export interface IAppVersionInfo {
+    name: string;
+    environments: IEnvironmentValues,
+    hasError: boolean;
+    stageMatchesProd: boolean;
+}
+
+export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
 
     const applicationStatusesPromises = applications.map(async ({name, environments}) => {
 
