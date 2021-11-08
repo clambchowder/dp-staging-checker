@@ -56,7 +56,7 @@ const AppVersions = () => {
             <DataGrid
                 rows={rows}
                 columns={cols}
-
+                hideFooter={true}
             />
         )}
 
