@@ -52,7 +52,9 @@ export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
             try {
                 const resp = await fetch(url)
                 const data = await resp.json()
-                return [env, data.Message || data.message]
+                const message = data.Message || data.message
+                const version = message.split(" ")[1] ?? message
+                return [env, version]
             } catch (error) {
                 return [env, ERROR_MSG]
             }
