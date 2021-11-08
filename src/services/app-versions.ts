@@ -30,6 +30,20 @@ export interface IAppVersionInfo {
     stageMatchesProd: boolean;
 }
 
+export interface IAppVersionInfoRow {
+    id: string;
+    name: string;
+    // status: string;
+    // type: string;
+    // vertical: string;
+    // team: string;
+    // qaVersion: string;
+    stageVersion: string;
+    prodVersion: string;
+    // hasError: boolean;
+    // stageMatchesProd: boolean;
+}
+
 export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
 
     const applicationStatusesPromises = applications.map(async ({name, environments}) => {
