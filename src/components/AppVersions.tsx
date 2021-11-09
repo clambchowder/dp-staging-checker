@@ -1,4 +1,4 @@
-import { Chip, CircularProgress, Link } from "@mui/material";
+import { Chip, CircularProgress, Link, useMediaQuery, useTheme } from "@mui/material";
 import { green, deepOrange, red } from "@mui/material/colors";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
@@ -22,6 +22,9 @@ const getDeployStatusColor = (status: deployStatus): string => {
 const AppVersions = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IAppVersionInfo[]>([])
+    const theme = useTheme();
+    const isPhoneScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     const [sortModel, setSortModel] = useState<GridSortModel>([
         {
@@ -44,7 +47,8 @@ const AppVersions = () => {
         sortable: false,
         headerAlign: 'center',
         align: 'center',
-        width: 150,
+        width: 116,
+        hide: isPhoneScreen
     }
     const chipSx: SxProps<Theme> = {
         width: 100,
@@ -59,6 +63,7 @@ const AppVersions = () => {
         {
             field: nameof<IAppVersionInfoRow>("name"),
             headerName: 'Name',
+            minWidth: 150,
             flex: 1
         },
         {
@@ -67,10 +72,12 @@ const AppVersions = () => {
             headerAlign: 'center',
             align: 'center',
             width: 80,
+            hide: isMediumScreen
         },
         {
             field: nameof<IAppVersionInfoRow>("deployStatus"),
             headerName: 'Status',
+            minWidth: 150,
             flex: 1,
             renderCell: ({ value, row }: IRenderCellProps ) => (
                 <Link
