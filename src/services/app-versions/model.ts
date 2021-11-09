@@ -65,6 +65,23 @@ export enum appType {
     v1 = 'v1'
 }
 
+
+export enum team {
+    Wheat = 'Wheat',
+    SqueakyWheel = 'SqueakyWheel',
+    GhostBusters = 'GhostBusters',
+    Agent = 'Agent',
+    InsureAnts = 'InsureAnts',
+    CommandCenter = 'CommandCenter',
+    // Platform = 'Platform',
+    // Data = 'Data'
+}
+
+export enum vertical {
+    Insurance = 'Insurance',
+    Distribution = 'Distribution',
+}
+
 export const getDeployStatus = (app: IAppVersionInfo): deployStatus => {
     const {qa, stage, prod} = app.environments;
     const hasError = Object.values(app.environments).some((x: IEnvironmentValue) => x.error)

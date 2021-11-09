@@ -62,6 +62,9 @@ const AppVersions = () => {
             field: nameof<IAppVersionInfoRow>("deployStatus"),
             headerName: 'Status',
             minWidth: 150,
+            sortComparator: (v1, v2, _params1, _params2) => {
+                return getDeployStatusStage(v1 as deployStatus) - getDeployStatusStage(v2 as deployStatus)
+            },
             flex: 1,
             renderCell: ({ value, row }: IRenderCellProps ) => (
                 <Link
