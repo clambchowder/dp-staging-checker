@@ -20,27 +20,41 @@ export const apis = [
     'Vehicleid'
 ] as const
 
-export type apiNames = typeof apis[number] | 'v1'
+export const apps = [
+    'FastPass',
+] as const
+
+export type apiNames = typeof apis[number] | typeof apps[number] | 'v1'
+
+export const separateReleaseBranch: Partial<Record<apiNames, boolean>> = {
+    'v1': true
+}
+
+const buildPipeRoot = 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build'
+const releasePipeRoot = 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build'
 
 export const pipelines: Record<apiNames, string> = {
-    Agency: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=130&branchFilter=624',
-    Audit: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=146&branchFilter=5471',
-    Auth: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=124&branchFilter=3214',
-    Bind: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=117&branchFilter=4613',
-    Communication: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=123&branchFilter=777',
-    Consumerid: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=126&branchFilter=384',
-    Content: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=115&branchFilter=53',
-    Externalid: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=162&branchFilter=6852',
-    Jdpower: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=122&branchFilter=3909',
-    Links: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=121&branchFilter=3188',
-    Location: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=120&branchFilter=55',
-    Org: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435',
-    Payments: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=127&branchFilter=176',
-    Search: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=151&branchFilter=5609',
-    Rating: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_release?view=mine&_a=releases&definitionId=22',
-    Reporting: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=172&branchFilter=7863',
-    Surehits: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=116&branchFilter=4858',
-    Travelers: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=170&branchFilter=7445',
-    Vehicleid: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=128&branchFilter=56',
-    v1: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_release?_a=releases&view=mine&definitionId=20'
+    Agency: `${buildPipeRoot}?definitionId=130&branchFilter=624`,
+    Audit: `${buildPipeRoot}?definitionId=146&branchFilter=5471`,
+    Auth: `${buildPipeRoot}?definitionId=124&branchFilter=3214`,
+    Bind: `${buildPipeRoot}?definitionId=117&branchFilter=4613`,
+    Communication: `${buildPipeRoot}?definitionId=123&branchFilter=777`,
+    Consumerid: `${buildPipeRoot}?definitionId=126&branchFilter=384`,
+    Content: `${buildPipeRoot}?definitionId=115&branchFilter=53`,
+    Externalid: `${buildPipeRoot}?definitionId=162&branchFilter=6852`,
+    Jdpower: `${buildPipeRoot}?definitionId=122&branchFilter=3909`,
+    Links: `${buildPipeRoot}?definitionId=121&branchFilter=3188`,
+    Location: `${buildPipeRoot}?definitionId=120&branchFilter=55`,
+    Org: `${buildPipeRoot}?definitionId=169&branchFilter=7435`,
+    Payments: `${buildPipeRoot}?definitionId=127&branchFilter=176`,
+    Search: `${buildPipeRoot}?definitionId=151&branchFilter=5609`,
+    Reporting: `${buildPipeRoot}?definitionId=172&branchFilter=7863`,
+    Surehits: `${buildPipeRoot}?definitionId=116&branchFilter=4858`,
+    Travelers: `${buildPipeRoot}?definitionId=170&branchFilter=7445`,
+    Vehicleid: `${buildPipeRoot}?definitionId=128&branchFilter=56`,
+
+    Rating: `${releasePipeRoot}?view=mine&_a=releases&definitionId=22`,
+    v1: `${releasePipeRoot}?_a=releases&view=mine&definitionId=20`,
+
+    FastPass: `${buildPipeRoot}?definitionId=137&branchFilter=500`
 }

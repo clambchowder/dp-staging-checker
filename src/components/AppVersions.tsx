@@ -62,6 +62,13 @@ const AppVersions = () => {
             flex: 1
         },
         {
+            field: nameof<IAppVersionInfoRow>("type"),
+            headerName: 'Type',
+            headerAlign: 'center',
+            align: 'center',
+            width: 80,
+        },
+        {
             field: nameof<IAppVersionInfoRow>("deployStatus"),
             headerName: 'Status',
             flex: 1,
@@ -127,12 +134,13 @@ const AppVersions = () => {
 
     const rows: IAppVersionInfoRow[] = appVersions.map(app => {
         const {qa, stage, prod} = app.environments;
-        const deployStatus = getDeployStatus(app.environments)
+        const deployStatus = getDeployStatus(app)
         const hasError = Object.values(app.environments).some((x: IEnvironmentValue) => x.error)
 
         return ({
             id: app.name,
             name: app.name,
+            type: app.type,
             qa: qa,
             stage: stage,
             prod: prod,

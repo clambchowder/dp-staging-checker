@@ -1,10 +1,11 @@
-import { apis } from "../../constants/constants"
-import { IAppInfo, IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
+import { apis, apps } from "../../constants/constants"
+import { appType, IAppInfo, IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
 
 
 export const applications: IAppInfo[] = [
     {
         name: 'v1',
+        type: appType.v1,
         environments: {
             qa: 'https://app.qa.dealerpolicy.com/status.php',
             stage: 'https://app.staging.dealerpolicy.com/status.php',
@@ -13,17 +14,27 @@ export const applications: IAppInfo[] = [
     },
     ...apis.map(api => ({
         name: api,
+        type: appType.Api,
         environments: {
             qa: `https://api-${api}.qa.dealerpolicy.cloud/status`,
             stage: `https://api-${api}.staging.dealerpolicy.cloud/status`,
             prod: `https://api-${api}.dealerpolicy.cloud/status`
+        }
+    })),
+    ...apps.map(app => ({
+        name: app,
+        type: appType.App,
+        environments: {
+            qa: `https://${app}.qa.dealerpolicy.com/status`,
+            stage: `https://${app}.staging.dealerpolicy.com/status`,
+            prod: `https://${app}.dealerpolicy.com/status`
         }
     }))
 ]
 
 export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
 
-    const applicationStatusesPromises = applications.map(async ({name, environments}) => {
+    const applicationStatusesPromises = applications.map(async ({name, type, environments}) => {
 
         const envEntriesPromises = Object.entries(environments).map(async ([env, url]) => {
             try {
@@ -43,6 +54,7 @@ export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
 
         return {
             name: name,
+            type: type,
             environments: envValues,
         }
     })

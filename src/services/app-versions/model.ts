@@ -1,3 +1,5 @@
+import { apiNames, separateReleaseBranch } from "../../constants/constants";
+
 export interface IEnvironmentValue {
     url: string;
     version?: string;
@@ -17,12 +19,14 @@ export interface IEnvironmentValues {
 }
 
 export interface IAppInfo {
-    name: string;
+    name: apiNames;
+    type: appType;
     environments: IEnvironments,
 }
 
 export interface IAppVersionInfo {
-    name: string;
+    name: apiNames;
+    type: appType;
     environments: IEnvironmentValues,
 }
 
@@ -30,7 +34,7 @@ export interface IAppVersionInfoRow {
     id: string;
     name: string;
     status: string;
-    // type: string;
+    type: appType;
     // vertical: string;
     // team: string;
     // qaVersion: string;
@@ -47,8 +51,16 @@ export enum deployStatus {
     upToDate = 2
 }
 
-export const getDeployStatus = ({qa, stage, prod}: IEnvironmentValues): deployStatus => {
-    if (qa.version !== stage.version) return deployStatus.pendingStaging;
+export enum appType {
+    App = 'App',
+    Api = 'Api',
+    v1 = 'V1'
+}
+
+export const getDeployStatus = (app: IAppVersionInfo): deployStatus => {
+    const {qa, stage, prod} = app.environments;
+    const hasSeparateReleaseBranch = separateReleaseBranch[app.name];
+    if (qa.version !== stage.version && !hasSeparateReleaseBranch) return deployStatus.pendingStaging;
     if (stage.version !== prod.version) return deployStatus.pendingRelease;
     return deployStatus.upToDate;
 }
