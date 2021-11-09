@@ -1,8 +1,8 @@
 import { apis, ERROR_MSG } from "../../constants/constants"
-import { IAppVersionInfo } from "./model"
+import { IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
 
 
-const applications = [
+export const applications = [
     {
         name: 'v1',
         environments: {
@@ -29,21 +29,21 @@ export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
                 const data = await resp.json()
                 const message = data.Message || data.message
                 const version = message.split(" ")[1] ?? message
-                return [env, version]
+                return [env, {url, version} as IEnvironmentValue]
             } catch (error) {
-                return [env, ERROR_MSG]
+                return [env, {url, error} as IEnvironmentValue]
             }
 
         })
 
 		const envEntries = await Promise.all(envEntriesPromises)
-        const envValues = Object.fromEntries(envEntries)
+        const envValues: IEnvironmentValues = Object.fromEntries(envEntries)
 
         return {
             name: name,
             environments: envValues,
-            hasError: envValues.prod === ERROR_MSG || envValues.stage === ERROR_MSG,
-            stageMatchesProd: envValues.prod === envValues.stage
+            hasError: Object.values(envValues).some((x: IEnvironmentValue) => x.error),
+            stageMatchesProd: envValues.prod.version === envValues.stage.version
         }
     })
 

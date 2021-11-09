@@ -1,6 +1,12 @@
+export interface IEnvironmentValue {
+    url: string;
+    version?: string;
+    error?: any
+}
+
 export interface IEnvironmentValues {
-    prod: string;
-    stage: string;
+    prod: IEnvironmentValue;
+    stage: IEnvironmentValue;
 }
 
 export interface IAppVersionInfo {
@@ -18,6 +24,7 @@ export interface IAppVersionInfoRow {
     // vertical: string;
     // team: string;
     // qaVersion: string;
+    stage: IEnvironmentValue,
     stageVersion: string;
     prodVersion: string;
     // hasError: boolean;

@@ -2,8 +2,14 @@
     {
         "name": "v1",
         "environments": {
-            "prod": "46813d74d6",
-            "stage": "2d0214c0da"
+            "prod": {
+                "url": "https://app.dealerpolicy.com/status.php",
+                "version": "46813d74d6"
+            },
+            "stage": {
+                "url": "https://app.staging.dealerpolicy.com/status.php",
+                "version": "2d0214c0da"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -11,17 +17,29 @@
     {
         "name": "Agency",
         "environments": {
-            "prod": "v1.4.32.17",
-            "stage": "v1.4.32.17"
+            "prod": {
+                "url": "https://api-Agency.dealerpolicy.cloud/status",
+                "version": "v1.4.32.17"
+            },
+            "stage": {
+                "url": "https://api-Agency.staging.dealerpolicy.cloud/status",
+                "version": "v1.4.32.17"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Audit",
         "environments": {
-            "prod": "v1.0.14.1",
-            "stage": "v1.0.15.0"
+            "prod": {
+                "url": "https://api-Audit.dealerpolicy.cloud/status",
+                "version": "v1.0.14.1"
+            },
+            "stage": {
+                "url": "https://api-Audit.staging.dealerpolicy.cloud/status",
+                "version": "v1.0.15.0"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -29,8 +47,14 @@
     {
         "name": "Auth",
         "environments": {
-            "prod": "v0.3.22.3",
-            "stage": "v0.3.23.1"
+            "prod": {
+                "url": "https://api-Auth.dealerpolicy.cloud/status",
+                "version": "v0.3.22.3"
+            },
+            "stage": {
+                "url": "https://api-Auth.staging.dealerpolicy.cloud/status",
+                "version": "v0.3.23.1"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -38,8 +62,14 @@
     {
         "name": "Bind",
         "environments": {
-            "prod": "v0.1.14.1",
-            "stage": "v0.1.15.4"
+            "prod": {
+                "url": "https://api-Bind.dealerpolicy.cloud/status",
+                "version": "v0.1.14.1"
+            },
+            "stage": {
+                "url": "https://api-Bind.staging.dealerpolicy.cloud/status",
+                "version": "v0.1.15.4"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -47,53 +77,89 @@
     {
         "name": "Communication",
         "environments": {
-            "prod": "v3.0.17.9",
-            "stage": "v3.0.17.9"
+            "prod": {
+                "url": "https://api-Communication.dealerpolicy.cloud/status",
+                "version": "v3.0.17.9"
+            },
+            "stage": {
+                "url": "https://api-Communication.staging.dealerpolicy.cloud/status",
+                "version": "v3.0.17.9"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Consumerid",
         "environments": {
-            "prod": "v1.2.17.1",
-            "stage": "v1.2.17.1"
+            "prod": {
+                "url": "https://api-Consumerid.dealerpolicy.cloud/status",
+                "version": "v1.2.17.1"
+            },
+            "stage": {
+                "url": "https://api-Consumerid.staging.dealerpolicy.cloud/status",
+                "version": "v1.2.17.1"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Content",
         "environments": {
-            "prod": "v5.0.1.1",
-            "stage": "v5.0.1.1"
+            "prod": {
+                "url": "https://api-Content.dealerpolicy.cloud/status",
+                "version": "v5.0.1.1"
+            },
+            "stage": {
+                "url": "https://api-Content.staging.dealerpolicy.cloud/status",
+                "version": "v5.0.1.1"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Externalid",
         "environments": {
-            "prod": "v1.0.14.1",
-            "stage": "v1.0.14.1"
+            "prod": {
+                "url": "https://api-Externalid.dealerpolicy.cloud/status",
+                "version": "v1.0.14.1"
+            },
+            "stage": {
+                "url": "https://api-Externalid.staging.dealerpolicy.cloud/status",
+                "version": "v1.0.14.1"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Jdpower",
         "environments": {
-            "prod": "v0.2.4.7",
-            "stage": "v0.2.4.7"
+            "prod": {
+                "url": "https://api-Jdpower.dealerpolicy.cloud/status",
+                "version": "v0.2.4.7"
+            },
+            "stage": {
+                "url": "https://api-Jdpower.staging.dealerpolicy.cloud/status",
+                "version": "v0.2.4.7"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Links",
         "environments": {
-            "prod": "v0.3.5.5",
-            "stage": "v0.3.5.7"
+            "prod": {
+                "url": "https://api-Links.dealerpolicy.cloud/status",
+                "version": "v0.3.5.5"
+            },
+            "stage": {
+                "url": "https://api-Links.staging.dealerpolicy.cloud/status",
+                "version": "v0.3.5.7"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -101,17 +167,29 @@
     {
         "name": "Location",
         "environments": {
-            "prod": "v4.2.4.2",
-            "stage": "v4.2.4.2"
+            "prod": {
+                "url": "https://api-Location.dealerpolicy.cloud/status",
+                "version": "v4.2.4.2"
+            },
+            "stage": {
+                "url": "https://api-Location.staging.dealerpolicy.cloud/status",
+                "version": "v4.2.4.2"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Org",
         "environments": {
-            "prod": "v2.0.7.2",
-            "stage": "v2.0.7.3"
+            "prod": {
+                "url": "https://api-Org.dealerpolicy.cloud/status",
+                "version": "v2.0.7.2"
+            },
+            "stage": {
+                "url": "https://api-Org.staging.dealerpolicy.cloud/status",
+                "version": "v2.0.7.3"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -119,8 +197,14 @@
     {
         "name": "Payments",
         "environments": {
-            "prod": "v6.1.18.3",
-            "stage": "v6.1.18.7"
+            "prod": {
+                "url": "https://api-Payments.dealerpolicy.cloud/status",
+                "version": "v6.1.18.3"
+            },
+            "stage": {
+                "url": "https://api-Payments.staging.dealerpolicy.cloud/status",
+                "version": "v6.1.18.7"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -128,17 +212,29 @@
     {
         "name": "Search",
         "environments": {
-            "prod": "v0.2.11.1",
-            "stage": "v0.2.11.1"
+            "prod": {
+                "url": "https://api-Search.dealerpolicy.cloud/status",
+                "version": "v0.2.11.1"
+            },
+            "stage": {
+                "url": "https://api-Search.staging.dealerpolicy.cloud/status",
+                "version": "v0.2.11.1"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Rating",
         "environments": {
-            "prod": "v14.1.30.10",
-            "stage": "v14.3.32.1"
+            "prod": {
+                "url": "https://api-Rating.dealerpolicy.cloud/status",
+                "version": "v14.1.30.10"
+            },
+            "stage": {
+                "url": "https://api-Rating.staging.dealerpolicy.cloud/status",
+                "version": "v14.3.32.1"
+            }
         },
         "hasError": false,
         "stageMatchesProd": false
@@ -146,37 +242,61 @@
     {
         "name": "Reporting",
         "environments": {
-            "prod": "v1.0.1.1",
-            "stage": "v1.0.1.1"
+            "prod": {
+                "url": "https://api-Reporting.dealerpolicy.cloud/status",
+                "version": "v1.0.1.1"
+            },
+            "stage": {
+                "url": "https://api-Reporting.staging.dealerpolicy.cloud/status",
+                "version": "v1.0.1.1"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Surehits",
         "environments": {
-            "prod": "v0.1.13.2",
-            "stage": "v0.1.13.2"
+            "prod": {
+                "url": "https://api-Surehits.dealerpolicy.cloud/status",
+                "version": "v0.1.13.2"
+            },
+            "stage": {
+                "url": "https://api-Surehits.staging.dealerpolicy.cloud/status",
+                "version": "v0.1.13.2"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Travelers",
         "environments": {
-            "prod": "v1.0.2.2",
-            "stage": "v1.0.2.2"
+            "prod": {
+                "url": "https://api-Travelers.dealerpolicy.cloud/status",
+                "version": "v1.0.2.2"
+            },
+            "stage": {
+                "url": "https://api-Travelers.staging.dealerpolicy.cloud/status",
+                "version": "v1.0.2.2"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     },
     {
         "name": "Vehicleid",
         "environments": {
-            "prod": "v4.4.1.10",
-            "stage": "v4.4.1.10"
+            "prod": {
+                "url": "https://api-Vehicleid.dealerpolicy.cloud/status",
+                "version": "v4.4.1.10"
+            },
+            "stage": {
+                "url": "https://api-Vehicleid.staging.dealerpolicy.cloud/status",
+                "version": "v4.4.1.10"
+            }
         },
         "hasError": false,
-        "stageMatchesProd": true
+        "stageMatchesProd": false
     }
 ]
