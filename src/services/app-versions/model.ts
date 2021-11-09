@@ -1,5 +1,5 @@
 import { apiNames, separateReleaseBranch } from "../../constants/constants";
-
+import { green, deepOrange, red, blue } from "@mui/material/colors";
 export interface IEnvironmentValue {
     url: string;
     version?: string;
@@ -37,7 +37,6 @@ export interface IAppVersionInfoRow {
     type: appType;
     // vertical: string;
     // team: string;
-    // qaVersion: string;
     qa: IEnvironmentValue,
     stage: IEnvironmentValue,
     prod: IEnvironmentValue,
@@ -45,17 +44,25 @@ export interface IAppVersionInfoRow {
     hasError: boolean;
 }
 
+export interface IFilterParams {
+    name?: apiNames;
+    status?: deployStatus;
+    type?: appType;
+    // vertical?: string;
+    // team?: string;
+}
+
 export enum deployStatus {
-    error = 0,
-    pendingStaging = 1,
-    pendingRelease = 2,
-    upToDate = 3
+    error = "error",
+    pendingStaging = "pendingStaging",
+    pendingRelease = "pendingRelease",
+    upToDate = "upToDate"
 }
 
 export enum appType {
     App = 'App',
     Api = 'Api',
-    v1 = 'V1'
+    v1 = 'v1'
 }
 
 export const getDeployStatus = (app: IAppVersionInfo): deployStatus => {
@@ -75,5 +82,25 @@ export const getDeployStatusMessage = (status: deployStatus): string => {
         case deployStatus.pendingStaging: return 'Pending Staging';
         case deployStatus.pendingRelease: return 'Pending Release';
         case deployStatus.upToDate: return 'Up To Date';
+    }
+}
+
+export const getDeployStatusStage = (status: deployStatus): number => {
+    switch (status) {
+        case deployStatus.error: return 0;
+        case deployStatus.pendingStaging: return 1;
+        case deployStatus.pendingRelease: return 2;
+        case deployStatus.upToDate: return 3;
+    }
+}
+
+
+
+export const getDeployStatusColor = (status: deployStatus): string => {
+    switch (status) {
+        case deployStatus.error: return red[800];
+        case deployStatus.pendingStaging: return deepOrange[800];
+        case deployStatus.pendingRelease: return blue[800];
+        case deployStatus.upToDate: return green[800];
     }
 }

@@ -1,26 +1,18 @@
 import { Chip, CircularProgress, Link, useMediaQuery, useTheme } from "@mui/material";
-import { green, deepOrange, red, blue } from "@mui/material/colors";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { apiNames, pipelines, separateReleaseBranch } from "../constants/constants";
-import { deployStatus, getAppVersions, getDeployStatus, getDeployStatusMessage, IAppVersionInfo, IAppVersionInfoRow, IEnvironmentValue } from "../services/app-versions";
+import { deployStatus, getAppVersions, getDeployStatus, getDeployStatusColor, getDeployStatusMessage, getDeployStatusStage, IAppVersionInfo, IAppVersionInfoRow, IEnvironmentValue, IFilterParams } from "../services/app-versions";
 import { nameof } from "../utils";
-
 
 type IRenderCellProps = GridRenderCellParams<any, IAppVersionInfoRow, any>
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IAppVersionInfoRow, any>
 
-const getDeployStatusColor = (status: deployStatus): string => {
-    switch (status) {
-        case deployStatus.error: return red[800];
-        case deployStatus.pendingStaging: return deepOrange[800];
-        case deployStatus.pendingRelease: return blue[800];
-        case deployStatus.upToDate: return green[800];
-    }
-}
 
 const AppVersions = () => {
+    const location = useLocation();
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IAppVersionInfo[]>([])
     const theme = useTheme();
@@ -101,7 +93,7 @@ const AppVersions = () => {
                         })
                     }}
                     color={value.error ? 'error' : 'default'}
-                    variant={row.deployStatus >= deployStatus.pendingStaging ? 'filled' : 'outlined'}
+                    variant={getDeployStatusStage(row.deployStatus) >= getDeployStatusStage(deployStatus.pendingStaging) ? 'filled' : 'outlined'}
                 />
             ),
         },
@@ -118,7 +110,7 @@ const AppVersions = () => {
                     label={value.version || "-"}
                     sx={chipSx}
                     color={value.error ? 'error' : 'default'}
-                    variant={row.deployStatus >= deployStatus.pendingRelease ? 'filled' : 'outlined'}
+                    variant={getDeployStatusStage(row.deployStatus) >= getDeployStatusStage(deployStatus.pendingRelease) ? 'filled' : 'outlined'}
                 />
             ),
         },
@@ -135,7 +127,7 @@ const AppVersions = () => {
                     label={value.version || "-"}
                     sx={chipSx}
                     color={value.error ? 'error' : 'default'}
-                    variant={row.deployStatus >= deployStatus.upToDate ? 'filled' : 'outlined'}
+                    variant={getDeployStatusStage(row.deployStatus) >= getDeployStatusStage(deployStatus.upToDate) ? 'filled' : 'outlined'}
                 />
             ),
         }
@@ -159,13 +151,22 @@ const AppVersions = () => {
         });
     })
 
+    const filteredRows = useMemo(()=> {
+        const filters: IFilterParams = Object.fromEntries(new URLSearchParams(location.search));
+        const filtered = rows.filter((row) => {
+            return (typeof filters.status === 'undefined' || row.deployStatus === filters.status)
+                && (typeof filters.name === 'undefined' || row.name.includes(filters.name))
+        })
+        return filtered;
+    }, [rows, location])
+
     return <div>
         {isLoading ? (
             <CircularProgress />
         ) : (
             <DataGrid
                 style={{border: 'none'}}
-                rows={rows}
+                rows={filteredRows}
                 columns={cols}
                 density={"standard"}
                 hideFooter={true}
