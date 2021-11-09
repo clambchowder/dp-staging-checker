@@ -100,7 +100,7 @@ const AppVersions = () => {
                     href={value.url}
                     label={value.version}
                     sx={chipSx}
-                    color={row.deployStatus === deployStatus.upToDate ? 'success' : 'warning'}
+                    color={"default"}
                     variant={row.deployStatus >= deployStatus.pendingStaging ? 'filled' : 'outlined'}
                 />
             ),
@@ -116,7 +116,7 @@ const AppVersions = () => {
                     href={value.url}
                     label={value.version}
                     sx={chipSx}
-                    color={row.deployStatus === deployStatus.upToDate ? 'success' : 'warning'}
+                    color={"default"}
                     variant={row.deployStatus >= deployStatus.pendingRelease ? 'filled' : 'outlined'}
                 />
             ),
@@ -132,7 +132,7 @@ const AppVersions = () => {
                     href={value.url}
                     label={value.version}
                     sx={chipSx}
-                    color={'success'}
+                    color={"default"}
                     variant={row.deployStatus >= deployStatus.upToDate ? 'filled' : 'outlined'}
                 />
             ),
