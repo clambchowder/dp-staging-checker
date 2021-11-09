@@ -1,4 +1,4 @@
-import { apis, ERROR_MSG } from "../../constants/constants"
+import { apis } from "../../constants/constants"
 import { IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
 
 

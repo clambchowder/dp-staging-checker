@@ -19,7 +19,7 @@ export interface IAppVersionInfo {
 export interface IAppVersionInfoRow {
     id: string;
     name: string;
-    // status: string;
+    status: string;
     // type: string;
     // vertical: string;
     // team: string;

@@ -1,7 +1,9 @@
-import { Chip, CircularProgress } from "@mui/material";
+import { Chip, CircularProgress, Link } from "@mui/material";
+import { deepOrange, green } from "@mui/material/colors";
 import { SxProps, Theme } from "@mui/system";
-import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
+import { apiNames, pipelines } from "../constants/constants";
 import { getAppVersions, IAppVersionInfo, IAppVersionInfoRow, IEnvironmentValue } from "../services/app-versions";
 import { nameof } from "../utils";
 
@@ -12,6 +14,13 @@ type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IAppVersionIn
 const AppVersions = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IAppVersionInfo[]>([])
+
+    const [sortModel, setSortModel] = useState<GridSortModel>([
+        {
+          field: 'status',
+          sort: 'asc',
+        },
+    ]);
 
     const hydrateData = async () => {
         const resp = await getAppVersions()
@@ -43,6 +52,20 @@ const AppVersions = () => {
             field: nameof<IAppVersionInfoRow>("name"),
             headerName: 'Name',
             flex: 1
+        },
+        {
+            field: nameof<IAppVersionInfoRow>("status"),
+            headerName: 'Status',
+            flex: 1,
+            renderCell: ({ value, row }: IRenderCellProps ) => (
+                <Link
+                    href={pipelines[row.id as apiNames]}
+                    color={row.stageMatchesProd ? green[800] : deepOrange[800]}
+                    underline={"hover"}
+                >
+                   {value}
+                </Link>
+            ),
         },
         {
             ...chipCol,
@@ -82,6 +105,7 @@ const AppVersions = () => {
         ...x.environments,
         id: x.name,
         name: x.name,
+        status: x.stageMatchesProd ? 'Up To Date' : 'Pending Deploy',
         stageVersion: x.environments.stage.version ?? '',
         prodVersion: x.environments.prod.version ?? '',
         stageMatchesProd: x.stageMatchesProd
@@ -99,6 +123,9 @@ const AppVersions = () => {
                 hideFooter={true}
                 disableColumnMenu={true}
                 disableVirtualization={true}
+                sortingOrder={['desc', 'asc']}
+                sortModel={sortModel}
+                onSortModelChange={(model) => setSortModel(model)}
             />
         )}
 
