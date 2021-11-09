@@ -11,7 +11,7 @@ export const apis = [
     'Links',
     'Location',
     'Org',
-    'Partners,
+    'Partners',
     'Payments',
     'Search',
     'Rating',
