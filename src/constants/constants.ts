@@ -11,7 +11,7 @@ export const apis = [
     'Links',
     'Location',
     'Org',
-    'Partners',
+    //'Partners-Saas', CORS
     'Payments',
     'Search',
     'Rating',
@@ -54,7 +54,7 @@ export const pipelines: Record<apiNames, string> = {
     Links: `${buildPipeRoot}?definitionId=121&branchFilter=3188`,
     Location: `${buildPipeRoot}?definitionId=120&branchFilter=55`,
     Org: `${buildPipeRoot}?definitionId=169&branchFilter=7435`,
-    Partners: `${buildPipeRoot}?definitionId=119&branchFilter=4385`,
+    //'Partners-Saas': `${buildPipeRoot}?definitionId=119&branchFilter=4385`,
     Payments: `${buildPipeRoot}?definitionId=127&branchFilter=176`,
     Search: `${buildPipeRoot}?definitionId=151&branchFilter=5609`,
     Reporting: `${buildPipeRoot}?definitionId=172&branchFilter=7863`,

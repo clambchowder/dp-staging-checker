@@ -65,6 +65,11 @@ export enum appType {
     v1 = 'v1'
 }
 
+export enum tld {
+    com = 'com',
+    cloud = 'cloud'
+}
+
 
 export enum team {
     Wheat = 'Wheat',
