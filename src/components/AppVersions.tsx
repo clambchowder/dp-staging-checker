@@ -1,9 +1,9 @@
 import { Chip, CircularProgress, Link, useMediaQuery, useTheme } from "@mui/material";
-import { green, deepOrange, red } from "@mui/material/colors";
+import { green, deepOrange, red, blue } from "@mui/material/colors";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import { apiNames, pipelines } from "../constants/constants";
+import { apiNames, pipelines, separateReleaseBranch } from "../constants/constants";
 import { deployStatus, getAppVersions, getDeployStatus, getDeployStatusMessage, IAppVersionInfo, IAppVersionInfoRow, IEnvironmentValue } from "../services/app-versions";
 import { nameof } from "../utils";
 
@@ -13,8 +13,9 @@ type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IAppVersionIn
 
 const getDeployStatusColor = (status: deployStatus): string => {
     switch (status) {
-        case deployStatus.pendingStaging: return red[800];
-        case deployStatus.pendingRelease: return deepOrange[800];
+        case deployStatus.error: return red[800];
+        case deployStatus.pendingStaging: return deepOrange[800];
+        case deployStatus.pendingRelease: return blue[800];
         case deployStatus.upToDate: return green[800];
     }
 }
@@ -24,7 +25,6 @@ const AppVersions = () => {
     const [appVersions, setAppVersions] = useState<IAppVersionInfo[]>([])
     const theme = useTheme();
     const isPhoneScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     const [sortModel, setSortModel] = useState<GridSortModel>([
         {
@@ -67,14 +67,6 @@ const AppVersions = () => {
             flex: 1
         },
         {
-            field: nameof<IAppVersionInfoRow>("type"),
-            headerName: 'Type',
-            headerAlign: 'center',
-            align: 'center',
-            width: 80,
-            hide: isMediumScreen
-        },
-        {
             field: nameof<IAppVersionInfoRow>("deployStatus"),
             headerName: 'Status',
             minWidth: 150,
@@ -100,9 +92,15 @@ const AppVersions = () => {
                     component={'a'}
                     href={value.url}
                     target={'_blank'}
-                    label={value.version}
-                    sx={chipSx}
-                    color={"default"}
+                    label={value.version || "-"}
+                    sx={{
+                        ...chipSx,
+                        ...(separateReleaseBranch[row.name] && {
+                            border: 'none',
+                            background: 'none'
+                        })
+                    }}
+                    color={value.error ? 'error' : 'default'}
                     variant={row.deployStatus >= deployStatus.pendingStaging ? 'filled' : 'outlined'}
                 />
             ),
@@ -117,9 +115,9 @@ const AppVersions = () => {
                     component={'a'}
                     href={value.url}
                     target={'_blank'}
-                    label={value.version}
+                    label={value.version || "-"}
                     sx={chipSx}
-                    color={"default"}
+                    color={value.error ? 'error' : 'default'}
                     variant={row.deployStatus >= deployStatus.pendingRelease ? 'filled' : 'outlined'}
                 />
             ),
@@ -134,9 +132,9 @@ const AppVersions = () => {
                     component={'a'}
                     href={value.url}
                     target={'_blank'}
-                    label={value.version}
+                    label={value.version || "-"}
                     sx={chipSx}
-                    color={"default"}
+                    color={value.error ? 'error' : 'default'}
                     variant={row.deployStatus >= deployStatus.upToDate ? 'filled' : 'outlined'}
                 />
             ),

@@ -32,7 +32,7 @@ export interface IAppVersionInfo {
 
 export interface IAppVersionInfoRow {
     id: string;
-    name: string;
+    name: apiNames;
     status: string;
     type: appType;
     // vertical: string;
@@ -46,9 +46,10 @@ export interface IAppVersionInfoRow {
 }
 
 export enum deployStatus {
-    pendingStaging = 0,
-    pendingRelease = 1,
-    upToDate = 2
+    error = 0,
+    pendingStaging = 1,
+    pendingRelease = 2,
+    upToDate = 3
 }
 
 export enum appType {
@@ -59,6 +60,9 @@ export enum appType {
 
 export const getDeployStatus = (app: IAppVersionInfo): deployStatus => {
     const {qa, stage, prod} = app.environments;
+    const hasError = Object.values(app.environments).some((x: IEnvironmentValue) => x.error)
+    if (hasError) return deployStatus.error
+
     const hasSeparateReleaseBranch = separateReleaseBranch[app.name];
     if (qa.version !== stage.version && !hasSeparateReleaseBranch) return deployStatus.pendingStaging;
     if (stage.version !== prod.version) return deployStatus.pendingRelease;
@@ -67,6 +71,7 @@ export const getDeployStatus = (app: IAppVersionInfo): deployStatus => {
 
 export const getDeployStatusMessage = (status: deployStatus): string => {
     switch (status) {
+        case deployStatus.error: return 'Error';
         case deployStatus.pendingStaging: return 'Pending Staging';
         case deployStatus.pendingRelease: return 'Pending Release';
         case deployStatus.upToDate: return 'Up To Date';
