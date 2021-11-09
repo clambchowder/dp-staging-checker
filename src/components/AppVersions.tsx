@@ -82,6 +82,7 @@ const AppVersions = () => {
             renderCell: ({ value, row }: IRenderCellProps ) => (
                 <Link
                     href={pipelines[row.id as apiNames]}
+                    target={'_blank'}
                     color={getDeployStatusColor(row.deployStatus)}
                     underline={"hover"}
                 >
@@ -98,6 +99,7 @@ const AppVersions = () => {
                     clickable={true}
                     component={'a'}
                     href={value.url}
+                    target={'_blank'}
                     label={value.version}
                     sx={chipSx}
                     color={"default"}
@@ -114,6 +116,7 @@ const AppVersions = () => {
                     clickable={true}
                     component={'a'}
                     href={value.url}
+                    target={'_blank'}
                     label={value.version}
                     sx={chipSx}
                     color={"default"}
@@ -130,6 +133,7 @@ const AppVersions = () => {
                     clickable={true}
                     component={'a'}
                     href={value.url}
+                    target={'_blank'}
                     label={value.version}
                     sx={chipSx}
                     color={"default"}

@@ -22,9 +22,16 @@ export const apis = [
 
 export const apps = [
     'FastPass',
+    'Marketplace',
+    'Marketplace-Reports'
+    //'Agent',
 ] as const
 
-export type apiNames = typeof apis[number] | typeof apps[number] | 'v1'
+export const cloudApps = [
+    'Cot',
+] as const
+
+export type apiNames = typeof apis[number] | typeof apps[number] | typeof cloudApps[number] | 'v1'
 
 export const separateReleaseBranch: Partial<Record<apiNames, boolean>> = {
     'v1': true
@@ -56,5 +63,8 @@ export const pipelines: Record<apiNames, string> = {
     Rating: `${releasePipeRoot}?view=mine&_a=releases&definitionId=22`,
     v1: `${releasePipeRoot}?_a=releases&view=mine&definitionId=20`,
 
-    FastPass: `${buildPipeRoot}?definitionId=137&branchFilter=500`
+    FastPass: `${buildPipeRoot}?definitionId=137&branchFilter=500`,
+    Cot: `${buildPipeRoot}?definitionId=135&branchFilter=2108`,
+    Marketplace: `${buildPipeRoot}?definitionId=145&branchFilter=5416`,
+   'Marketplace-Reports': `${buildPipeRoot}?definitionId=157&branchFilter=6292`
 }

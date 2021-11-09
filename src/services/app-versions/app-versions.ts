@@ -1,4 +1,4 @@
-import { apis, apps } from "../../constants/constants"
+import { apis, apps, cloudApps } from "../../constants/constants"
 import { appType, IAppInfo, IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
 
 
@@ -29,6 +29,15 @@ export const applications: IAppInfo[] = [
             stage: `https://${app}.staging.dealerpolicy.com/status`,
             prod: `https://${app}.dealerpolicy.com/status`
         }
+    })),
+    ...cloudApps.map(app => ({
+        name: app,
+        type: appType.App,
+        environments: {
+            qa: `https://${app}.qa.dealerpolicy.cloud/status`,
+            stage: `https://${app}.staging.dealerpolicy.cloud/status`,
+            prod: `https://${app}.dealerpolicy.cloud/status`
+        }
     }))
 ]
 
@@ -41,7 +50,7 @@ export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
                 const resp = await fetch(url)
                 const data = await resp.json()
                 const message = data.Message || data.message
-                const version = message.split(" ")[1] ?? message
+                const version = message.split(" ")[1]?.replace("alpha", "α")?.replace("v", "") ?? message
                 return [env, {url, version} as IEnvironmentValue]
             } catch (error) {
                 return [env, {url, error} as IEnvironmentValue]
