@@ -2,11 +2,10 @@
 
 ## Todo
 
-* Team Dropdown
-* Vertical Dropdown
-* Sort by Status
-* Grid
-* Link to pipeline
-* Add Applications
+* Add Application Endpoints
+  * Add type
+* Add Team field + filter
+* Add Insurance / Distribution Vertical field + filter
+* Add handling for v1 status
 
 

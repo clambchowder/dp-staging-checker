@@ -1,20 +1,22 @@
 import { apis } from "../../constants/constants"
-import { IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
+import { IAppInfo, IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
 
 
-export const applications = [
+export const applications: IAppInfo[] = [
     {
         name: 'v1',
         environments: {
-            prod: 'https://app.dealerpolicy.com/status.php',
-            stage: 'https://app.staging.dealerpolicy.com/status.php'
+            qa: 'https://app.qa.dealerpolicy.com/status.php',
+            stage: 'https://app.staging.dealerpolicy.com/status.php',
+            prod: 'https://app.dealerpolicy.com/status.php'
         }
     },
     ...apis.map(api => ({
         name: api,
         environments: {
-            prod: `https://api-${api}.dealerpolicy.cloud/status`,
-            stage: `https://api-${api}.staging.dealerpolicy.cloud/status`
+            qa: `https://api-${api}.qa.dealerpolicy.cloud/status`,
+            stage: `https://api-${api}.staging.dealerpolicy.cloud/status`,
+            prod: `https://api-${api}.dealerpolicy.cloud/status`
         }
     }))
 ]
@@ -42,14 +44,10 @@ export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
         return {
             name: name,
             environments: envValues,
-            hasError: Object.values(envValues).some((x: IEnvironmentValue) => x.error),
-            stageMatchesProd: envValues.prod.version === envValues.stage.version
         }
     })
 
 	const applicationStatuses = await Promise.all(applicationStatusesPromises)
-
-    console.log(applicationStatuses)
 
     return applicationStatuses;
 }

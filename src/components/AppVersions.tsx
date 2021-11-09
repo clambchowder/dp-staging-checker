@@ -1,15 +1,23 @@
 import { Chip, CircularProgress, Link } from "@mui/material";
-import { deepOrange, green } from "@mui/material/colors";
+import { green, deepOrange, red } from "@mui/material/colors";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { apiNames, pipelines } from "../constants/constants";
-import { getAppVersions, IAppVersionInfo, IAppVersionInfoRow, IEnvironmentValue } from "../services/app-versions";
+import { deployStatus, getAppVersions, getDeployStatus, getDeployStatusMessage, IAppVersionInfo, IAppVersionInfoRow, IEnvironmentValue } from "../services/app-versions";
 import { nameof } from "../utils";
 
 
 type IRenderCellProps = GridRenderCellParams<any, IAppVersionInfoRow, any>
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IAppVersionInfoRow, any>
+
+const getDeployStatusColor = (status: deployStatus): string => {
+    switch (status) {
+        case deployStatus.pendingStaging: return red[800];
+        case deployStatus.pendingRelease: return deepOrange[800];
+        case deployStatus.upToDate: return green[800];
+    }
+}
 
 const AppVersions = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -17,7 +25,7 @@ const AppVersions = () => {
 
     const [sortModel, setSortModel] = useState<GridSortModel>([
         {
-          field: 'status',
+          field: 'deployStatus',
           sort: 'asc',
         },
     ]);
@@ -54,17 +62,33 @@ const AppVersions = () => {
             flex: 1
         },
         {
-            field: nameof<IAppVersionInfoRow>("status"),
+            field: nameof<IAppVersionInfoRow>("deployStatus"),
             headerName: 'Status',
             flex: 1,
             renderCell: ({ value, row }: IRenderCellProps ) => (
                 <Link
                     href={pipelines[row.id as apiNames]}
-                    color={row.stageMatchesProd ? green[800] : deepOrange[800]}
+                    color={getDeployStatusColor(row.deployStatus)}
                     underline={"hover"}
                 >
-                   {value}
+                   {getDeployStatusMessage(value)}
                 </Link>
+            ),
+        },
+        {
+            ...chipCol,
+            field: nameof<IAppVersionInfoRow>("qa"),
+            headerName: 'QA',
+            renderCell: ({ value, row }: IRenderEnvCellProps ) => (
+                <Chip
+                    clickable={true}
+                    component={'a'}
+                    href={value.url}
+                    label={value.version}
+                    sx={chipSx}
+                    color={row.deployStatus === deployStatus.upToDate ? 'success' : 'warning'}
+                    variant={row.deployStatus >= deployStatus.pendingStaging ? 'filled' : 'outlined'}
+                />
             ),
         },
         {
@@ -78,38 +102,45 @@ const AppVersions = () => {
                     href={value.url}
                     label={value.version}
                     sx={chipSx}
-                    color={row.stageMatchesProd ? 'success' : 'warning'}
-                    variant={row.stageMatchesProd ? 'filled' : 'outlined'}
+                    color={row.deployStatus === deployStatus.upToDate ? 'success' : 'warning'}
+                    variant={row.deployStatus >= deployStatus.pendingRelease ? 'filled' : 'outlined'}
                 />
             ),
         },
         {
             ...chipCol,
-            field: nameof<IAppVersionInfoRow>("prodVersion"),
+            field: nameof<IAppVersionInfoRow>("prod"),
             headerName: 'Prod',
             renderCell: ({ value, row }: IRenderCellProps) => (
                 <Chip
                     clickable={true}
                     component={'a'}
                     href={value.url}
-                    label={value}
+                    label={value.version}
                     sx={chipSx}
                     color={'success'}
-                    variant={row.stageMatchesProd ? 'filled' : 'outlined'}
+                    variant={row.deployStatus >= deployStatus.upToDate ? 'filled' : 'outlined'}
                 />
             ),
         }
     ]
 
-    const rows: IAppVersionInfoRow[] = appVersions.map(x => ({
-        ...x.environments,
-        id: x.name,
-        name: x.name,
-        status: x.stageMatchesProd ? 'Up To Date' : 'Pending Deploy',
-        stageVersion: x.environments.stage.version ?? '',
-        prodVersion: x.environments.prod.version ?? '',
-        stageMatchesProd: x.stageMatchesProd
-    }))
+    const rows: IAppVersionInfoRow[] = appVersions.map(app => {
+        const {qa, stage, prod} = app.environments;
+        const deployStatus = getDeployStatus(app.environments)
+        const hasError = Object.values(app.environments).some((x: IEnvironmentValue) => x.error)
+
+        return ({
+            id: app.name,
+            name: app.name,
+            qa: qa,
+            stage: stage,
+            prod: prod,
+            status: getDeployStatusMessage(deployStatus),
+            deployStatus: deployStatus,
+            hasError: hasError
+        });
+    })
 
     return <div>
         {isLoading ? (
