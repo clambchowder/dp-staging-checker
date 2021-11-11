@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import AppVersions from "./components/AppVersions";
+import AppVersionGrid from "./components/AppVersionGrid";
 
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
       }}
     >
       <header>
-        <Typography variant={'h1'} sx={{marginTop: 0}} >
-          DP Staging Checker
+        <Typography variant={'h1'} sx={{marginTop: 0, textAlign: 'center'}}>
+            DP Staging Checker
         </Typography>
       </header>
       <main style={{flexGrow: 1}}>
-        <AppVersions />
+        <AppVersionGrid />
       </main>
 
   </Container>

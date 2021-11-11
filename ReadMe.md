@@ -7,5 +7,6 @@
 * Add Team field + filter
 * Add Insurance / Distribution Vertical field + filter
 * Add Filters
+* [Barlow](https://fonts.google.com/specimen/Barlow)
 
 

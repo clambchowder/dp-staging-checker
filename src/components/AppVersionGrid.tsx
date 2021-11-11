@@ -12,12 +12,13 @@ type IRenderCellProps = GridRenderCellParams<any, IApplicationInfoRow, any>
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationInfoRow, any>
 
 
-const AppVersions = () => {
+const AppVersionGrid = () => {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IApplicationInfoRow[]>([])
     const theme = useTheme();
     const isPhoneScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isBigScreen = useMediaQuery(theme.breakpoints.up('xl'));
 
     const [sortModel, setSortModel] = useState<GridSortModel>([
         {
@@ -77,6 +78,27 @@ const AppVersions = () => {
                    {getDeployStatusMessage(value)}
                 </Link>
             ),
+        },
+        {
+            field: nameof<IApplicationInfoRow>("team"),
+            headerName: 'Team',
+            minWidth: 150,
+            flex: 1,
+            hide: !isBigScreen
+        },
+        {
+            field: nameof<IApplicationInfoRow>("vertical"),
+            headerName: 'Vertical',
+            minWidth: 150,
+            flex: 1,
+            hide: !isBigScreen
+        },
+        {
+            field: nameof<IApplicationInfoRow>("type"),
+            headerName: 'Type',
+            minWidth: 80,
+            flex: .5,
+            hide: !isBigScreen
         },
         {
             ...chipCol,
@@ -147,6 +169,7 @@ const AppVersions = () => {
         return filtered;
     }, [appVersions, location])
 
+
     return <div>
         {isLoading ? (
             <CircularProgress />
@@ -168,4 +191,4 @@ const AppVersions = () => {
     </div>
 }
 
-export default AppVersions;
+export default AppVersionGrid;
