@@ -1,56 +1,33 @@
-import { apis, apps, cloudApps } from "../../constants/constants"
-import { appType, IAppInfo, IAppVersionInfo, IEnvironmentValue, IEnvironmentValues } from "./model"
+import { AppConfig, AppNames } from "../../config"
+import { IApplicationData, IApplicationOptions, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IEnvironmentData } from "../../models"
+import { getDeployStatus, getDeployStatusMessage, getStatusUrl, getVerticalByTeam, sanitizeVersion } from "../../utils"
 
 
-export const applications: IAppInfo[] = [
-    {
-        name: 'v1',
-        type: appType.v1,
-        environments: {
-            qa: 'https://app.qa.dealerpolicy.com/status.php',
-            stage: 'https://app.staging.dealerpolicy.com/status.php',
-            prod: 'https://app.dealerpolicy.com/status.php'
+export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
+
+    const appConfigEntires = Object.entries<AppNames, IApplicationOptions>(AppConfig)
+
+    const appData: IApplicationData[] = appConfigEntires.map(([name, info]) => {
+        const appName = name as AppNames;
+        return {
+            ...info,
+            name: appName,
+            vertical: getVerticalByTeam(info.team),
+            environments: {
+                qa: { url: getStatusUrl(appName, info, EnvironmentType.qa) },
+                staging: { url: getStatusUrl(appName, info, EnvironmentType.staging) },
+                prod: { url: getStatusUrl(appName, info, EnvironmentType.prod) }
+            }
         }
-    },
-    ...apis.map(api => ({
-        name: api,
-        type: appType.Api,
-        environments: {
-            qa: `https://api-${api}.qa.dealerpolicy.cloud/status`,
-            stage: `https://api-${api}.staging.dealerpolicy.cloud/status`,
-            prod: `https://api-${api}.dealerpolicy.cloud/status`
-        }
-    })),
-    ...apps.map(app => ({
-        name: app,
-        type: appType.App,
-        environments: {
-            qa: `https://${app}.qa.dealerpolicy.com/status`,
-            stage: `https://${app}.staging.dealerpolicy.com/status`,
-            prod: `https://${app}.dealerpolicy.com/status`
-        }
-    })),
-    ...cloudApps.map(app => ({
-        name: app,
-        type: appType.App,
-        environments: {
-            qa: `https://${app}.qa.dealerpolicy.cloud/status`,
-            stage: `https://${app}.staging.dealerpolicy.cloud/status`,
-            prod: `https://${app}.dealerpolicy.cloud/status`
-        }
-    }))
-]
+    })
 
-export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
+    const appStatusPromises = appData.map(async (app) => {
 
-    const applicationStatusesPromises = applications.map(async ({name, type, environments}) => {
-
-        const envEntriesPromises = Object.entries(environments).map(async ([env, url]) => {
+        const envEntriesPromises = Object.entries(app.environments).map(async ([env, {url}]) => {
             try {
                 const resp = await fetch(url)
                 const data = await resp.json()
-                const message = data.Message || data.message
-                const version = message.split(" ")[1]?.replace("alpha", "α")?.replace("v", "") ?? message
+                const version = sanitizeVersion(data.Message || data.message)
                 return [env, {url, version} as IEnvironmentValue]
             } catch (error) {
                 return [env, {url, error} as IEnvironmentValue]
@@ -59,16 +36,30 @@ export const getAppVersions = async (): Promise<IAppVersionInfo[]> => {
         })
 
 		const envEntries = await Promise.all(envEntriesPromises)
-        const envValues: IEnvironmentValues = Object.fromEntries(envEntries)
+        const envValues: IEnvironmentData = Object.fromEntries(envEntries)
 
         return {
-            name: name,
-            type: type,
+            ...app,
             environments: envValues,
         }
     })
 
-	const applicationStatuses = await Promise.all(applicationStatusesPromises)
+	const appStatuses = await Promise.all(appStatusPromises)
 
-    return applicationStatuses;
+    const appRows: IApplicationInfoRow[] = appStatuses.map(app => {
+        const deployStatus = getDeployStatus(app)
+
+        return ({
+            ...app,
+            ...app.environments,
+            id: app.name,
+            deployStatus: deployStatus,
+            deployStatusDisplay: getDeployStatusMessage(deployStatus),
+        });
+    })
+
+    console.log(appRows);
+
+    return appRows;
 }
+

@@ -1,0 +1,906 @@
+[
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=130&branchFilter=624",
+        "name": "Agency",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Agency.qa.dealerpolicy.cloud/status",
+                "version": "1.4.32.18"
+            },
+            "staging": {
+                "url": "https://api-Agency.staging.dealerpolicy.cloud/status",
+                "version": "1.4.32.18"
+            },
+            "prod": {
+                "url": "https://api-Agency.dealerpolicy.cloud/status",
+                "version": "1.4.32.18"
+            }
+        },
+        "qa": {
+            "url": "https://api-Agency.qa.dealerpolicy.cloud/status",
+            "version": "1.4.32.18"
+        },
+        "staging": {
+            "url": "https://api-Agency.staging.dealerpolicy.cloud/status",
+            "version": "1.4.32.18"
+        },
+        "prod": {
+            "url": "https://api-Agency.dealerpolicy.cloud/status",
+            "version": "1.4.32.18"
+        },
+        "id": "Agency",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=146&branchFilter=5471",
+        "name": "Audit",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Audit.qa.dealerpolicy.cloud/status",
+                "version": "1.0.15.2"
+            },
+            "staging": {
+                "url": "https://api-Audit.staging.dealerpolicy.cloud/status",
+                "version": "1.0.15.0"
+            },
+            "prod": {
+                "url": "https://api-Audit.dealerpolicy.cloud/status",
+                "version": "1.0.15.0"
+            }
+        },
+        "qa": {
+            "url": "https://api-Audit.qa.dealerpolicy.cloud/status",
+            "version": "1.0.15.2"
+        },
+        "staging": {
+            "url": "https://api-Audit.staging.dealerpolicy.cloud/status",
+            "version": "1.0.15.0"
+        },
+        "prod": {
+            "url": "https://api-Audit.dealerpolicy.cloud/status",
+            "version": "1.0.15.0"
+        },
+        "id": "Audit",
+        "deployStatus": "pendingStaging",
+        "deployStatusDisplay": "Pending Staging"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=124&branchFilter=3214",
+        "name": "Auth",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Auth.qa.dealerpolicy.cloud/status",
+                "version": "0.3.23.4"
+            },
+            "staging": {
+                "url": "https://api-Auth.staging.dealerpolicy.cloud/status",
+                "version": "0.3.23.4"
+            },
+            "prod": {
+                "url": "https://api-Auth.dealerpolicy.cloud/status",
+                "version": "0.3.23.3"
+            }
+        },
+        "qa": {
+            "url": "https://api-Auth.qa.dealerpolicy.cloud/status",
+            "version": "0.3.23.4"
+        },
+        "staging": {
+            "url": "https://api-Auth.staging.dealerpolicy.cloud/status",
+            "version": "0.3.23.4"
+        },
+        "prod": {
+            "url": "https://api-Auth.dealerpolicy.cloud/status",
+            "version": "0.3.23.3"
+        },
+        "id": "Auth",
+        "deployStatus": "pendingRelease",
+        "deployStatusDisplay": "Pending Release"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=117&branchFilter=4613",
+        "name": "Bind",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Bind.qa.dealerpolicy.cloud/status",
+                "version": "0.1.15.6"
+            },
+            "staging": {
+                "url": "https://api-Bind.staging.dealerpolicy.cloud/status",
+                "version": "0.1.15.6"
+            },
+            "prod": {
+                "url": "https://api-Bind.dealerpolicy.cloud/status",
+                "version": "0.1.15.6"
+            }
+        },
+        "qa": {
+            "url": "https://api-Bind.qa.dealerpolicy.cloud/status",
+            "version": "0.1.15.6"
+        },
+        "staging": {
+            "url": "https://api-Bind.staging.dealerpolicy.cloud/status",
+            "version": "0.1.15.6"
+        },
+        "prod": {
+            "url": "https://api-Bind.dealerpolicy.cloud/status",
+            "version": "0.1.15.6"
+        },
+        "id": "Bind",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=123&branchFilter=777",
+        "name": "Communication",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Communication.qa.dealerpolicy.cloud/status",
+                "version": "3.0.17.10"
+            },
+            "staging": {
+                "url": "https://api-Communication.staging.dealerpolicy.cloud/status",
+                "version": "3.0.17.10"
+            },
+            "prod": {
+                "url": "https://api-Communication.dealerpolicy.cloud/status",
+                "version": "3.0.17.9"
+            }
+        },
+        "qa": {
+            "url": "https://api-Communication.qa.dealerpolicy.cloud/status",
+            "version": "3.0.17.10"
+        },
+        "staging": {
+            "url": "https://api-Communication.staging.dealerpolicy.cloud/status",
+            "version": "3.0.17.10"
+        },
+        "prod": {
+            "url": "https://api-Communication.dealerpolicy.cloud/status",
+            "version": "3.0.17.9"
+        },
+        "id": "Communication",
+        "deployStatus": "pendingRelease",
+        "deployStatusDisplay": "Pending Release"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=126&branchFilter=384",
+        "name": "Consumerid",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Consumerid.qa.dealerpolicy.cloud/status",
+                "version": "1.2.17.6"
+            },
+            "staging": {
+                "url": "https://api-Consumerid.staging.dealerpolicy.cloud/status",
+                "version": "1.2.17.6"
+            },
+            "prod": {
+                "url": "https://api-Consumerid.dealerpolicy.cloud/status",
+                "version": "1.2.17.6"
+            }
+        },
+        "qa": {
+            "url": "https://api-Consumerid.qa.dealerpolicy.cloud/status",
+            "version": "1.2.17.6"
+        },
+        "staging": {
+            "url": "https://api-Consumerid.staging.dealerpolicy.cloud/status",
+            "version": "1.2.17.6"
+        },
+        "prod": {
+            "url": "https://api-Consumerid.dealerpolicy.cloud/status",
+            "version": "1.2.17.6"
+        },
+        "id": "Consumerid",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=115&branchFilter=53",
+        "name": "Content",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Content.qa.dealerpolicy.cloud/status",
+                "version": "5.0.1.6"
+            },
+            "staging": {
+                "url": "https://api-Content.staging.dealerpolicy.cloud/status",
+                "version": "5.0.1.4"
+            },
+            "prod": {
+                "url": "https://api-Content.dealerpolicy.cloud/status",
+                "version": "5.0.1.4"
+            }
+        },
+        "qa": {
+            "url": "https://api-Content.qa.dealerpolicy.cloud/status",
+            "version": "5.0.1.6"
+        },
+        "staging": {
+            "url": "https://api-Content.staging.dealerpolicy.cloud/status",
+            "version": "5.0.1.4"
+        },
+        "prod": {
+            "url": "https://api-Content.dealerpolicy.cloud/status",
+            "version": "5.0.1.4"
+        },
+        "id": "Content",
+        "deployStatus": "pendingStaging",
+        "deployStatusDisplay": "Pending Staging"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=162&branchFilter=6852",
+        "name": "Externalid",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Externalid.qa.dealerpolicy.cloud/status",
+                "version": "1.0.14.1"
+            },
+            "staging": {
+                "url": "https://api-Externalid.staging.dealerpolicy.cloud/status",
+                "version": "1.0.14.1"
+            },
+            "prod": {
+                "url": "https://api-Externalid.dealerpolicy.cloud/status",
+                "version": "1.0.14.1"
+            }
+        },
+        "qa": {
+            "url": "https://api-Externalid.qa.dealerpolicy.cloud/status",
+            "version": "1.0.14.1"
+        },
+        "staging": {
+            "url": "https://api-Externalid.staging.dealerpolicy.cloud/status",
+            "version": "1.0.14.1"
+        },
+        "prod": {
+            "url": "https://api-Externalid.dealerpolicy.cloud/status",
+            "version": "1.0.14.1"
+        },
+        "id": "Externalid",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=122&branchFilter=3909",
+        "name": "Jdpower",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Jdpower.qa.dealerpolicy.cloud/status",
+                "version": "0.2.4.7"
+            },
+            "staging": {
+                "url": "https://api-Jdpower.staging.dealerpolicy.cloud/status",
+                "version": "0.2.4.7"
+            },
+            "prod": {
+                "url": "https://api-Jdpower.dealerpolicy.cloud/status",
+                "version": "0.2.4.7"
+            }
+        },
+        "qa": {
+            "url": "https://api-Jdpower.qa.dealerpolicy.cloud/status",
+            "version": "0.2.4.7"
+        },
+        "staging": {
+            "url": "https://api-Jdpower.staging.dealerpolicy.cloud/status",
+            "version": "0.2.4.7"
+        },
+        "prod": {
+            "url": "https://api-Jdpower.dealerpolicy.cloud/status",
+            "version": "0.2.4.7"
+        },
+        "id": "Jdpower",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=121&branchFilter=3188",
+        "name": "Links",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Links.qa.dealerpolicy.cloud/status",
+                "version": "0.3.5.7"
+            },
+            "staging": {
+                "url": "https://api-Links.staging.dealerpolicy.cloud/status",
+                "version": "0.3.5.7"
+            },
+            "prod": {
+                "url": "https://api-Links.dealerpolicy.cloud/status",
+                "version": "0.3.5.7"
+            }
+        },
+        "qa": {
+            "url": "https://api-Links.qa.dealerpolicy.cloud/status",
+            "version": "0.3.5.7"
+        },
+        "staging": {
+            "url": "https://api-Links.staging.dealerpolicy.cloud/status",
+            "version": "0.3.5.7"
+        },
+        "prod": {
+            "url": "https://api-Links.dealerpolicy.cloud/status",
+            "version": "0.3.5.7"
+        },
+        "id": "Links",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=120&branchFilter=55",
+        "name": "Location",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Location.qa.dealerpolicy.cloud/status",
+                "version": "4.2.4.2"
+            },
+            "staging": {
+                "url": "https://api-Location.staging.dealerpolicy.cloud/status",
+                "version": "4.2.4.2"
+            },
+            "prod": {
+                "url": "https://api-Location.dealerpolicy.cloud/status",
+                "version": "4.2.4.2"
+            }
+        },
+        "qa": {
+            "url": "https://api-Location.qa.dealerpolicy.cloud/status",
+            "version": "4.2.4.2"
+        },
+        "staging": {
+            "url": "https://api-Location.staging.dealerpolicy.cloud/status",
+            "version": "4.2.4.2"
+        },
+        "prod": {
+            "url": "https://api-Location.dealerpolicy.cloud/status",
+            "version": "4.2.4.2"
+        },
+        "id": "Location",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435",
+        "name": "Org",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Org.qa.dealerpolicy.cloud/status",
+                "version": "2.0.7.3"
+            },
+            "staging": {
+                "url": "https://api-Org.staging.dealerpolicy.cloud/status",
+                "version": "2.0.7.3"
+            },
+            "prod": {
+                "url": "https://api-Org.dealerpolicy.cloud/status",
+                "version": "2.0.7.3"
+            }
+        },
+        "qa": {
+            "url": "https://api-Org.qa.dealerpolicy.cloud/status",
+            "version": "2.0.7.3"
+        },
+        "staging": {
+            "url": "https://api-Org.staging.dealerpolicy.cloud/status",
+            "version": "2.0.7.3"
+        },
+        "prod": {
+            "url": "https://api-Org.dealerpolicy.cloud/status",
+            "version": "2.0.7.3"
+        },
+        "id": "Org",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385",
+        "displayName": "Partners SaaS",
+        "name": "Partners-SaaS",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Partners-SaaS.qa.dealerpolicy.cloud/status",
+                "error": {}
+            },
+            "staging": {
+                "url": "https://api-Partners-SaaS.staging.dealerpolicy.cloud/status",
+                "error": {}
+            },
+            "prod": {
+                "url": "https://api-Partners-SaaS.dealerpolicy.cloud/status",
+                "error": {}
+            }
+        },
+        "qa": {
+            "url": "https://api-Partners-SaaS.qa.dealerpolicy.cloud/status",
+            "error": {}
+        },
+        "staging": {
+            "url": "https://api-Partners-SaaS.staging.dealerpolicy.cloud/status",
+            "error": {}
+        },
+        "prod": {
+            "url": "https://api-Partners-SaaS.dealerpolicy.cloud/status",
+            "error": {}
+        },
+        "id": "Partners-SaaS",
+        "deployStatus": "error",
+        "deployStatusDisplay": "Error"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=127&branchFilter=176",
+        "name": "Payments",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Payments.qa.dealerpolicy.cloud/status",
+                "version": "6.1.18.8"
+            },
+            "staging": {
+                "url": "https://api-Payments.staging.dealerpolicy.cloud/status",
+                "version": "6.1.18.8"
+            },
+            "prod": {
+                "url": "https://api-Payments.dealerpolicy.cloud/status",
+                "version": "6.1.18.8"
+            }
+        },
+        "qa": {
+            "url": "https://api-Payments.qa.dealerpolicy.cloud/status",
+            "version": "6.1.18.8"
+        },
+        "staging": {
+            "url": "https://api-Payments.staging.dealerpolicy.cloud/status",
+            "version": "6.1.18.8"
+        },
+        "prod": {
+            "url": "https://api-Payments.dealerpolicy.cloud/status",
+            "version": "6.1.18.8"
+        },
+        "id": "Payments",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=151&branchFilter=5609",
+        "name": "Search",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Search.qa.dealerpolicy.cloud/status",
+                "version": "0.2.11.1"
+            },
+            "staging": {
+                "url": "https://api-Search.staging.dealerpolicy.cloud/status",
+                "version": "0.2.11.1"
+            },
+            "prod": {
+                "url": "https://api-Search.dealerpolicy.cloud/status",
+                "version": "0.2.11.1"
+            }
+        },
+        "qa": {
+            "url": "https://api-Search.qa.dealerpolicy.cloud/status",
+            "version": "0.2.11.1"
+        },
+        "staging": {
+            "url": "https://api-Search.staging.dealerpolicy.cloud/status",
+            "version": "0.2.11.1"
+        },
+        "prod": {
+            "url": "https://api-Search.dealerpolicy.cloud/status",
+            "version": "0.2.11.1"
+        },
+        "id": "Search",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=172&branchFilter=7863",
+        "name": "Reporting",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Reporting.qa.dealerpolicy.cloud/status",
+                "version": "1.0.1.1"
+            },
+            "staging": {
+                "url": "https://api-Reporting.staging.dealerpolicy.cloud/status",
+                "version": "1.0.1.1"
+            },
+            "prod": {
+                "url": "https://api-Reporting.dealerpolicy.cloud/status",
+                "version": "1.0.1.1"
+            }
+        },
+        "qa": {
+            "url": "https://api-Reporting.qa.dealerpolicy.cloud/status",
+            "version": "1.0.1.1"
+        },
+        "staging": {
+            "url": "https://api-Reporting.staging.dealerpolicy.cloud/status",
+            "version": "1.0.1.1"
+        },
+        "prod": {
+            "url": "https://api-Reporting.dealerpolicy.cloud/status",
+            "version": "1.0.1.1"
+        },
+        "id": "Reporting",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=116&branchFilter=4858",
+        "name": "Surehits",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Surehits.qa.dealerpolicy.cloud/status",
+                "version": "0.1.13.3"
+            },
+            "staging": {
+                "url": "https://api-Surehits.staging.dealerpolicy.cloud/status",
+                "version": "0.1.13.2"
+            },
+            "prod": {
+                "url": "https://api-Surehits.dealerpolicy.cloud/status",
+                "version": "0.1.13.2"
+            }
+        },
+        "qa": {
+            "url": "https://api-Surehits.qa.dealerpolicy.cloud/status",
+            "version": "0.1.13.3"
+        },
+        "staging": {
+            "url": "https://api-Surehits.staging.dealerpolicy.cloud/status",
+            "version": "0.1.13.2"
+        },
+        "prod": {
+            "url": "https://api-Surehits.dealerpolicy.cloud/status",
+            "version": "0.1.13.2"
+        },
+        "id": "Surehits",
+        "deployStatus": "pendingStaging",
+        "deployStatusDisplay": "Pending Staging"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=170&branchFilter=7445",
+        "name": "Travelers",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Travelers.qa.dealerpolicy.cloud/status",
+                "version": "1.0.2.2"
+            },
+            "staging": {
+                "url": "https://api-Travelers.staging.dealerpolicy.cloud/status",
+                "version": "1.0.2.2"
+            },
+            "prod": {
+                "url": "https://api-Travelers.dealerpolicy.cloud/status",
+                "version": "1.0.2.2"
+            }
+        },
+        "qa": {
+            "url": "https://api-Travelers.qa.dealerpolicy.cloud/status",
+            "version": "1.0.2.2"
+        },
+        "staging": {
+            "url": "https://api-Travelers.staging.dealerpolicy.cloud/status",
+            "version": "1.0.2.2"
+        },
+        "prod": {
+            "url": "https://api-Travelers.dealerpolicy.cloud/status",
+            "version": "1.0.2.2"
+        },
+        "id": "Travelers",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=128&branchFilter=56",
+        "name": "Vehicleid",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Vehicleid.qa.dealerpolicy.cloud/status",
+                "version": "4.4.1.10"
+            },
+            "staging": {
+                "url": "https://api-Vehicleid.staging.dealerpolicy.cloud/status",
+                "version": "4.4.1.10"
+            },
+            "prod": {
+                "url": "https://api-Vehicleid.dealerpolicy.cloud/status",
+                "version": "4.4.1.10"
+            }
+        },
+        "qa": {
+            "url": "https://api-Vehicleid.qa.dealerpolicy.cloud/status",
+            "version": "4.4.1.10"
+        },
+        "staging": {
+            "url": "https://api-Vehicleid.staging.dealerpolicy.cloud/status",
+            "version": "4.4.1.10"
+        },
+        "prod": {
+            "url": "https://api-Vehicleid.dealerpolicy.cloud/status",
+            "version": "4.4.1.10"
+        },
+        "id": "Vehicleid",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "Api",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?view=mine&_a=releases&definitionId=22",
+        "name": "Rating",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://api-Rating.qa.dealerpolicy.cloud/status",
+                "version": "14.3.32.2"
+            },
+            "staging": {
+                "url": "https://api-Rating.staging.dealerpolicy.cloud/status",
+                "version": "14.3.32.2"
+            },
+            "prod": {
+                "url": "https://api-Rating.dealerpolicy.cloud/status",
+                "version": "14.3.32.2"
+            }
+        },
+        "qa": {
+            "url": "https://api-Rating.qa.dealerpolicy.cloud/status",
+            "version": "14.3.32.2"
+        },
+        "staging": {
+            "url": "https://api-Rating.staging.dealerpolicy.cloud/status",
+            "version": "14.3.32.2"
+        },
+        "prod": {
+            "url": "https://api-Rating.dealerpolicy.cloud/status",
+            "version": "14.3.32.2"
+        },
+        "id": "Rating",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "App",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=137&branchFilter=500",
+        "name": "FastPass",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://FastPass.qa.dealerpolicy.com/status",
+                "version": "1.4.346"
+            },
+            "staging": {
+                "url": "https://FastPass.staging.dealerpolicy.com/status",
+                "version": "1.4.344"
+            },
+            "prod": {
+                "url": "https://FastPass.dealerpolicy.com/status",
+                "version": "1.4.344"
+            }
+        },
+        "qa": {
+            "url": "https://FastPass.qa.dealerpolicy.com/status",
+            "version": "1.4.346"
+        },
+        "staging": {
+            "url": "https://FastPass.staging.dealerpolicy.com/status",
+            "version": "1.4.344"
+        },
+        "prod": {
+            "url": "https://FastPass.dealerpolicy.com/status",
+            "version": "1.4.344"
+        },
+        "id": "FastPass",
+        "deployStatus": "pendingStaging",
+        "deployStatusDisplay": "Pending Staging"
+    },
+    {
+        "type": "App",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=145&branchFilter=5416",
+        "name": "Marketplace",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://Marketplace.qa.dealerpolicy.com/status",
+                "version": "2.1.1-α.364"
+            },
+            "staging": {
+                "url": "https://Marketplace.staging.dealerpolicy.com/status",
+                "version": "2.1.1-α.364"
+            },
+            "prod": {
+                "url": "https://Marketplace.dealerpolicy.com/status",
+                "version": "2.1.1-α.364"
+            }
+        },
+        "qa": {
+            "url": "https://Marketplace.qa.dealerpolicy.com/status",
+            "version": "2.1.1-α.364"
+        },
+        "staging": {
+            "url": "https://Marketplace.staging.dealerpolicy.com/status",
+            "version": "2.1.1-α.364"
+        },
+        "prod": {
+            "url": "https://Marketplace.dealerpolicy.com/status",
+            "version": "2.1.1-α.364"
+        },
+        "id": "Marketplace",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "App",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=157&branchFilter=6292",
+        "displayName": "Marketplace Reports",
+        "name": "Marketplace-Reports",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://Marketplace-Reports.qa.dealerpolicy.com/status",
+                "version": "0.1.52"
+            },
+            "staging": {
+                "url": "https://Marketplace-Reports.staging.dealerpolicy.com/status",
+                "version": "0.1.52"
+            },
+            "prod": {
+                "url": "https://Marketplace-Reports.dealerpolicy.com/status",
+                "version": "0.1.52"
+            }
+        },
+        "qa": {
+            "url": "https://Marketplace-Reports.qa.dealerpolicy.com/status",
+            "version": "0.1.52"
+        },
+        "staging": {
+            "url": "https://Marketplace-Reports.staging.dealerpolicy.com/status",
+            "version": "0.1.52"
+        },
+        "prod": {
+            "url": "https://Marketplace-Reports.dealerpolicy.com/status",
+            "version": "0.1.52"
+        },
+        "id": "Marketplace-Reports",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "App",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=135&branchFilter=2108",
+        "tld": "cloud",
+        "name": "Cot",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://Cot.qa.dealerpolicy.cloud/status",
+                "version": "1.1.22-α.15"
+            },
+            "staging": {
+                "url": "https://Cot.staging.dealerpolicy.cloud/status",
+                "version": "1.1.22-α.15"
+            },
+            "prod": {
+                "url": "https://Cot.dealerpolicy.cloud/status",
+                "version": "1.1.22-α.15"
+            }
+        },
+        "qa": {
+            "url": "https://Cot.qa.dealerpolicy.cloud/status",
+            "version": "1.1.22-α.15"
+        },
+        "staging": {
+            "url": "https://Cot.staging.dealerpolicy.cloud/status",
+            "version": "1.1.22-α.15"
+        },
+        "prod": {
+            "url": "https://Cot.dealerpolicy.cloud/status",
+            "version": "1.1.22-α.15"
+        },
+        "id": "Cot",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    },
+    {
+        "type": "v1",
+        "team": "GhostBusters",
+        "pipelineUrl": "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?_a=releases&view=mine&definitionId=20",
+        "separateReleaseBranch": true,
+        "name": "v1",
+        "vertical": "Insurance",
+        "environments": {
+            "qa": {
+                "url": "https://app.qa.dealerpolicy.com/status.php",
+                "version": "9306e46965"
+            },
+            "staging": {
+                "url": "https://app.staging.dealerpolicy.com/status.php",
+                "version": "4798203b95"
+            },
+            "prod": {
+                "url": "https://app.dealerpolicy.com/status.php",
+                "version": "4798203b95"
+            }
+        },
+        "qa": {
+            "url": "https://app.qa.dealerpolicy.com/status.php",
+            "version": "9306e46965"
+        },
+        "staging": {
+            "url": "https://app.staging.dealerpolicy.com/status.php",
+            "version": "4798203b95"
+        },
+        "prod": {
+            "url": "https://app.dealerpolicy.com/status.php",
+            "version": "4798203b95"
+        },
+        "id": "v1",
+        "deployStatus": "upToDate",
+        "deployStatusDisplay": "Up To Date"
+    }
+]
