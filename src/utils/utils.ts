@@ -13,6 +13,19 @@ export const sanitizeVersion = (message: string): string => {
     return message.split(" ")[1]?.replace("alpha", "α")?.replace("v", "") ?? message
 }
 
+export const getTeamDisplayName = (team: TeamType): string => {
+    switch (team) {
+        case TeamType.Wheat: return TeamType.Wheat;
+        case TeamType.Artemis: return TeamType.Artemis;
+        case TeamType.SqueakyWheel: return 'Squeaky Wheel';
+        case TeamType.GhostBusters: return 'Ghost Busters'
+        case TeamType.InsureAnts: return TeamType.InsureAnts;
+        case TeamType.Agent: return TeamType.Agent;
+        default:
+            return VerticalType.Unknown
+    }
+}
+
 export const getVerticalByTeam = (team: TeamType): VerticalType => {
     switch (team) {
         case TeamType.Wheat:

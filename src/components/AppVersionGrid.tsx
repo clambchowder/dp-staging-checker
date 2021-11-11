@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IFilterParams } from "../models";
 import { getAppVersions } from "../services/app-versions";
-import { getDeployStatusColor, getDeployStatusMessage, getDeployStatusStage, nameof } from "../utils";
+import { getDeployStatusColor, getDeployStatusMessage, getDeployStatusStage, getTeamDisplayName, nameof } from "../utils";
 
 
 type IRenderCellProps = GridRenderCellParams<any, IApplicationInfoRow, any>
@@ -84,6 +84,7 @@ const AppVersionGrid = () => {
             headerName: 'Team',
             minWidth: 150,
             flex: 1,
+            renderCell: ({value}) => getTeamDisplayName(value),
             hide: !isBigScreen
         },
         {
