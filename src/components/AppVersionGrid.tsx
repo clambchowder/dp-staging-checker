@@ -179,6 +179,7 @@ const AppVersionGrid = () => {
                 rows={filteredRows}
                 columns={cols}
                 density={"standard"}
+                autoHeight={true}
                 hideFooter={true}
                 disableColumnMenu={true}
                 disableVirtualization={true}
