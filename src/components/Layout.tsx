@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import AppVersionGrid from "./AppVersionGrid";
+import StatusGrid from "./StatusGrid";
 import HeaderForms from "./HeaderForm";
 
 
@@ -16,7 +16,7 @@ function Layout() {
     >
       <HeaderForms />
       <main style={{flexGrow: 1}}>
-        <AppVersionGrid />
+        <StatusGrid />
       </main>
 
   </Container>

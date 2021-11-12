@@ -13,7 +13,7 @@ type IRenderStatusProps = GridRenderCellParams<DeployStatus, IApplicationInfoRow
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationInfoRow, any>
 
 
-const AppVersionGrid = () => {
+const StatusGrid = () => {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IApplicationInfoRow[]>([])
@@ -194,4 +194,4 @@ const AppVersionGrid = () => {
     </div>
 }
 
-export default AppVersionGrid;
+export default StatusGrid;
