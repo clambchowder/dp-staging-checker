@@ -1,6 +1,6 @@
 import { AppConfig, AppNames } from "../../config"
 import { IApplicationData, IApplicationOptions, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IEnvironmentData } from "../../models"
-import { getDeployStatus, getStatusUrl, getVerticalByTeam, sanitizeVersion } from "../../utils"
+import { getDeployStatus, getStatusUrl, sanitizeVersion, TeamTypeVertical } from "../../utils"
 
 
 export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
@@ -12,7 +12,7 @@ export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
         return {
             ...info,
             name: appName,
-            vertical: getVerticalByTeam(info.team),
+            vertical: TeamTypeVertical[info.team],
             environments: {
                 qa: { url: getStatusUrl(appName, info, EnvironmentType.qa) },
                 staging: { url: getStatusUrl(appName, info, EnvironmentType.staging) },

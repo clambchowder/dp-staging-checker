@@ -3,12 +3,13 @@ import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IFilterParams } from "../models";
+import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IFilterParams, TeamType } from "../models";
 import { getAppVersions } from "../services/app-versions";
-import { DeployStatusDisplay, getDeployStatusColor, getDeployStatusStage, getTeamDisplayName, nameof } from "../utils";
+import { DeployStatusDisplay, DeployStatusColor, DeployStatusStage, TeamTypeDisplay, nameof, isDeployedUpTo } from "../utils";
 
 
 type IRenderCellProps = GridRenderCellParams<any, IApplicationInfoRow, any>
+type IRenderTeamProps = GridRenderCellParams<TeamType, IApplicationInfoRow, any>
 type IRenderStatusProps = GridRenderCellParams<DeployStatus, IApplicationInfoRow, any>
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationInfoRow, any>
 
@@ -66,14 +67,14 @@ const StatusGrid = () => {
             headerName: 'Status',
             minWidth: 150,
             sortComparator: (v1, v2, _params1, _params2) => {
-                return getDeployStatusStage(v1 as DeployStatus) - getDeployStatusStage(v2 as DeployStatus)
+                return DeployStatusStage[v1 as DeployStatus] - DeployStatusStage[v2 as DeployStatus]
             },
             flex: 1,
             renderCell: ({ value, row }: IRenderStatusProps ) => (
                 <Link
                     href={row.pipelineUrl}
                     target={'_blank'}
-                    color={getDeployStatusColor(row.deployStatus)}
+                    color={DeployStatusColor[row.deployStatus]}
                     underline={"hover"}
                 >
                    {DeployStatusDisplay[value]}
@@ -85,7 +86,7 @@ const StatusGrid = () => {
             headerName: 'Team',
             minWidth: 150,
             flex: 1,
-            renderCell: ({value}) => getTeamDisplayName(value),
+            renderCell: ({value}: IRenderTeamProps) => TeamTypeDisplay[value],
             hide: !isBigScreen
         },
         {
@@ -121,7 +122,7 @@ const StatusGrid = () => {
                         })
                     }}
                     color={value.error ? 'error' : 'default'}
-                    variant={getDeployStatusStage(row.deployStatus) >= getDeployStatusStage(DeployStatus.pendingStaging) ? 'filled' : 'outlined'}
+                    variant={isDeployedUpTo(row.deployStatus, DeployStatus.pendingStaging) ? 'filled' : 'outlined'}
                 />
             ),
         },
@@ -138,7 +139,7 @@ const StatusGrid = () => {
                     label={value.version || "-"}
                     sx={chipSx}
                     color={value.error ? 'error' : 'default'}
-                    variant={getDeployStatusStage(row.deployStatus) >= getDeployStatusStage(DeployStatus.pendingRelease) ? 'filled' : 'outlined'}
+                    variant={isDeployedUpTo(row.deployStatus, DeployStatus.pendingRelease) ? 'filled' : 'outlined'}
                 />
             ),
         },
@@ -155,7 +156,7 @@ const StatusGrid = () => {
                     label={value.version || "-"}
                     sx={chipSx}
                     color={value.error ? 'error' : 'default'}
-                    variant={getDeployStatusStage(row.deployStatus) >= getDeployStatusStage(DeployStatus.upToDate) ? 'filled' : 'outlined'}
+                    variant={isDeployedUpTo(row.deployStatus, DeployStatus.upToDate) ? 'filled' : 'outlined'}
                 />
             ),
         }

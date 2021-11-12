@@ -13,33 +13,6 @@ export const sanitizeVersion = (message: string): string => {
     return message.split(" ")[1]?.replace("alpha", "α")?.replace("v", "") ?? message
 }
 
-export const getTeamDisplayName = (team: TeamType): string => {
-    switch (team) {
-        case TeamType.Wheat: return TeamType.Wheat;
-        case TeamType.Artemis: return TeamType.Artemis;
-        case TeamType.SqueakyWheel: return 'Squeaky Wheel';
-        case TeamType.GhostBusters: return 'Ghost Busters'
-        case TeamType.InsureAnts: return TeamType.InsureAnts;
-        case TeamType.Agent: return TeamType.Agent;
-        default:
-            return VerticalType.Unknown
-    }
-}
-
-export const getVerticalByTeam = (team: TeamType): VerticalType => {
-    switch (team) {
-        case TeamType.Wheat:
-        case TeamType.Artemis:
-        case TeamType.SqueakyWheel:
-            return VerticalType.Distribution
-        case TeamType.GhostBusters:
-        case TeamType.InsureAnts:
-        case TeamType.Agent:
-            return VerticalType.Insurance
-        default:
-            return VerticalType.Unknown
-    }
-}
 
 export const getStatusUrl = (name: AppNames, appOptions: IApplicationOptions,env: EnvironmentType): string => {
     const envSubdomain = env === EnvironmentType.prod ? "" : `.${env}`
@@ -62,6 +35,29 @@ export const getDeployStatus = (app: IApplicationData): DeployStatus => {
     return DeployStatus.upToDate;
 }
 
+
+export const TeamTypeDisplay: Record<TeamType, string> = {
+    [TeamType.SqueakyWheel]: 'Squeaky Wheel',
+    [TeamType.GhostBusters]: 'Ghost Busters',
+    [TeamType.Artemis]: TeamType.Artemis,
+    [TeamType.Wheat]: TeamType.Wheat,
+    [TeamType.InsureAnts]: TeamType.InsureAnts,
+    [TeamType.Agent]: TeamType.Agent,
+    [TeamType.Shared]: TeamType.Shared,
+
+}
+
+export const TeamTypeVertical: Record<TeamType, VerticalType> = {
+    [TeamType.Wheat]: VerticalType.Distribution,
+    [TeamType.Artemis]: VerticalType.Distribution,
+    [TeamType.SqueakyWheel]: VerticalType.Distribution,
+    [TeamType.GhostBusters]: VerticalType.Insurance,
+    [TeamType.InsureAnts]: VerticalType.Insurance,
+    [TeamType.Agent]: VerticalType.Insurance,
+    [TeamType.Shared]: VerticalType.Shared,
+}
+
+
 export const DeployStatusDisplay: Record<DeployStatus, string> = {
     [DeployStatus.error]: 'Error',
     [DeployStatus.pendingStaging]: 'Pending Staging',
@@ -69,22 +65,22 @@ export const DeployStatusDisplay: Record<DeployStatus, string> = {
     [DeployStatus.upToDate]: 'Up To Date'
 }
 
-export const getDeployStatusStage = (status: DeployStatus): number => {
-    switch (status) {
-        case DeployStatus.error: return 0;
-        case DeployStatus.pendingStaging: return 1;
-        case DeployStatus.pendingRelease: return 2;
-        case DeployStatus.upToDate: return 3;
-        default: return 0;
-    }
+export const DeployStatusStage: Record<DeployStatus, number> = {
+    [DeployStatus.error]: 1,
+    [DeployStatus.pendingStaging]: 2,
+    [DeployStatus.pendingRelease]: 3,
+    [DeployStatus.upToDate]: 4
+
 }
 
-export const getDeployStatusColor = (status: DeployStatus): string => {
-    switch (status) {
-        case DeployStatus.error: return red[800];
-        case DeployStatus.pendingStaging: return deepOrange[800];
-        case DeployStatus.pendingRelease: return blue[800];
-        case DeployStatus.upToDate: return green[800];
-        default: return '';
-    }
+export const DeployStatusColor: Record<DeployStatus, string> = {
+    [DeployStatus.error]: red[800],
+    [DeployStatus.pendingStaging]: deepOrange[800],
+    [DeployStatus.pendingRelease]: blue[800],
+    [DeployStatus.upToDate]: green[800]
 }
+
+
+export const isDeployedUpTo = (val: DeployStatus, max: DeployStatus): boolean =>
+    DeployStatusStage[val] >= DeployStatusStage[max]
+

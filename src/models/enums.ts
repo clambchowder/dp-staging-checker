@@ -39,5 +39,5 @@ export enum TeamType {
 export enum VerticalType {
     Insurance = 'Insurance',
     Distribution = 'Distribution',
-    Unknown = 'Unknown',
+    Shared = 'Shared',
 }
