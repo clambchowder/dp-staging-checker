@@ -2,7 +2,7 @@ import { Chip, CircularProgress, Link, useMediaQuery, useTheme } from "@mui/mate
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useEffect, useMemo, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IFilterParams } from "../models";
 import { getAppVersions } from "../services/app-versions";
 import { DeployStatusDisplay, getDeployStatusColor, getDeployStatusStage, getTeamDisplayName, nameof } from "../utils";
@@ -14,7 +14,7 @@ type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationI
 
 
 const StatusGrid = () => {
-    const location = useLocation();
+    const [searchParams] = useSearchParams();
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IApplicationInfoRow[]>([])
     const theme = useTheme();
@@ -163,13 +163,13 @@ const StatusGrid = () => {
 
 
     const filteredRows = useMemo(()=> {
-        const filters: IFilterParams = Object.fromEntries(new URLSearchParams(location.search));
+        const filters: IFilterParams = Object.fromEntries(searchParams);
         const filtered = appVersions.filter((row) => {
             return (!filters.status || row.deployStatus === filters.status)
                 && (!filters.name || row.name.includes(filters.name))
         })
         return filtered;
-    }, [appVersions, location])
+    }, [appVersions, searchParams])
 
 
     return <div>

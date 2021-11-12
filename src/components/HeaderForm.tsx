@@ -1,11 +1,11 @@
 import { Checkbox, FormControl, ListItemText, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { DeployStatus } from "../models";
 import { DeployStatusDisplay } from "../utils";
 
 const HeaderForms = () => {
-    const navigate  = useNavigate()
+    const [searchParms, setSearchParams] = useSearchParams();
     const [statuses, setStatuses] = useState<string[]>([]);
 
     const handleChange = (event: SelectChangeEvent<typeof statuses>) => {
@@ -13,9 +13,7 @@ const HeaderForms = () => {
           target: { value },
         } = event;
 
-        navigate({
-            search: `?status=${value}`
-        })
+        setSearchParams(`?status=${value}`)
 
         setStatuses(
           // On autofill we get a the stringified value.
