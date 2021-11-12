@@ -62,14 +62,11 @@ export const getDeployStatus = (app: IApplicationData): DeployStatus => {
     return DeployStatus.upToDate;
 }
 
-export const getDeployStatusMessage = (status: DeployStatus): string => {
-    switch (status) {
-        case DeployStatus.error: return 'Error';
-        case DeployStatus.pendingStaging: return 'Pending Staging';
-        case DeployStatus.pendingRelease: return 'Pending Release';
-        case DeployStatus.upToDate: return 'Up To Date';
-        default: return '';
-    }
+export const DeployStatusDisplay: Record<DeployStatus, string> = {
+    [DeployStatus.error]: 'Error',
+    [DeployStatus.pendingStaging]: 'Pending Staging',
+    [DeployStatus.pendingRelease]: 'Pending Release',
+    [DeployStatus.upToDate]: 'Up To Date'
 }
 
 export const getDeployStatusStage = (status: DeployStatus): number => {

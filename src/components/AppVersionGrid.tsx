@@ -5,10 +5,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IFilterParams } from "../models";
 import { getAppVersions } from "../services/app-versions";
-import { getDeployStatusColor, getDeployStatusMessage, getDeployStatusStage, getTeamDisplayName, nameof } from "../utils";
+import { DeployStatusDisplay, getDeployStatusColor, getDeployStatusStage, getTeamDisplayName, nameof } from "../utils";
 
 
 type IRenderCellProps = GridRenderCellParams<any, IApplicationInfoRow, any>
+type IRenderStatusProps = GridRenderCellParams<DeployStatus, IApplicationInfoRow, any>
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationInfoRow, any>
 
 
@@ -68,14 +69,14 @@ const AppVersionGrid = () => {
                 return getDeployStatusStage(v1 as DeployStatus) - getDeployStatusStage(v2 as DeployStatus)
             },
             flex: 1,
-            renderCell: ({ value, row }: IRenderCellProps ) => (
+            renderCell: ({ value, row }: IRenderStatusProps ) => (
                 <Link
                     href={row.pipelineUrl}
                     target={'_blank'}
                     color={getDeployStatusColor(row.deployStatus)}
                     underline={"hover"}
                 >
-                   {getDeployStatusMessage(value)}
+                   {DeployStatusDisplay[value]}
                 </Link>
             ),
         },
@@ -164,8 +165,8 @@ const AppVersionGrid = () => {
     const filteredRows = useMemo(()=> {
         const filters: IFilterParams = Object.fromEntries(new URLSearchParams(location.search));
         const filtered = appVersions.filter((row) => {
-            return (typeof filters.status === 'undefined' || row.deployStatus === filters.status)
-                && (typeof filters.name === 'undefined' || row.name.includes(filters.name))
+            return (!filters.status || row.deployStatus === filters.status)
+                && (!filters.name || row.name.includes(filters.name))
         })
         return filtered;
     }, [appVersions, location])

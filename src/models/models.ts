@@ -30,7 +30,6 @@ export interface IApplicationData extends IApplicationInfo {
 export interface IApplicationInfoRow extends IApplicationInfo, IEnvironmentData {
     id: string;
     deployStatus: DeployStatus
-    deployStatusDisplay: string;
 }
 
 export interface IFilterParams {

@@ -1,6 +1,6 @@
 import { AppConfig, AppNames } from "../../config"
 import { IApplicationData, IApplicationOptions, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IEnvironmentData } from "../../models"
-import { getDeployStatus, getDeployStatusMessage, getStatusUrl, getVerticalByTeam, sanitizeVersion } from "../../utils"
+import { getDeployStatus, getStatusUrl, getVerticalByTeam, sanitizeVersion } from "../../utils"
 
 
 export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
@@ -46,19 +46,12 @@ export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
 
 	const appStatuses = await Promise.all(appStatusPromises)
 
-    const appRows: IApplicationInfoRow[] = appStatuses.map(app => {
-        const deployStatus = getDeployStatus(app)
-
-        return ({
-            ...app,
-            ...app.environments,
-            id: app.name,
-            deployStatus: deployStatus,
-            deployStatusDisplay: getDeployStatusMessage(deployStatus),
-        });
-    })
-
-    console.log(appRows);
+    const appRows: IApplicationInfoRow[] = appStatuses.map(app => ({
+        ...app,
+        ...app.environments,
+        id: app.name,
+        deployStatus: getDeployStatus(app),
+    }))
 
     return appRows;
 }
