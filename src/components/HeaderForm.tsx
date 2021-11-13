@@ -1,24 +1,17 @@
 import { Checkbox, FormControl, ListItemText, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material"
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
 import { DeployStatus } from "../models";
-import { DeployStatusDisplay } from "../utils";
+import { DeployStatusDisplay, nameof } from "../utils";
 
 const HeaderForms = () => {
-    const [searchParms, setSearchParams] = useSearchParams();
-    const [statuses, setStatuses] = useState<string[]>([]);
+    const [filterParams, setFilterParams] = useFilterParams();
 
-    const handleChange = (event: SelectChangeEvent<typeof statuses>) => {
-        const {
-          target: { value },
-        } = event;
-
-        setSearchParams(`?status=${value}`)
-
-        setStatuses(
-          // On autofill we get a the stringified value.
-          typeof value === 'string' ? value.split(',') : value,
-        );
+    const handleChange = (event: SelectChangeEvent<string[]>) => {
+        const { target: { value, name } } = event;
+        setFilterParams({
+            ...filterParams,
+            [name]: value
+        })
       };
 
     // todo
@@ -38,14 +31,15 @@ const HeaderForms = () => {
                         labelId={'status-multiple-checkbox-label'}
                         multiple={true}
                         onChange={handleChange}
-                        value={statuses}
+                        name={String(nameof<IFilterParams>("status"))}
+                        value={filterParams.status as string[]}
                         renderValue={(selected) => (
                             selected.length > 2 ? 'Multiple' : selected.map((x) => DeployStatusDisplay[x as DeployStatus]).join(", ")
                         )}
                     >
                     {Object.keys(DeployStatus).map((name) => (
                         <MenuItem key={name} value={name}>
-                            <Checkbox checked={statuses.includes(name)} />
+                            <Checkbox checked={filterParams.status.includes(name as DeployStatus)} />
                             <ListItemText primary={DeployStatusDisplay[name]} />
                         </MenuItem>
                     ))}

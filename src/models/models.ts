@@ -32,10 +32,3 @@ export interface IApplicationInfoRow extends IApplicationInfo, IEnvironmentData 
     deployStatus: DeployStatus
 }
 
-export interface IFilterParams {
-    name?: AppNames;
-    status?: DeployStatus;
-    type?: AppType;
-    // vertical?: string;
-    // team?: string;
-}

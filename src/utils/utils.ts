@@ -2,6 +2,7 @@ import { red, deepOrange, blue, green } from "@mui/material/colors";
 import { IApplicationData, IApplicationOptions, IEnvironmentValue,  AppType, DeployStatus, EnvironmentType, TeamType, TldType, VerticalType } from "../models";
 import { AppNames } from "../config";
 
+export type CreateMethod<T> = (args?: Partial<T>) => T;
 
 export const nameof = <T>(name: keyof T) => name;
 export const DefineIdentity = <Constraint> () => <T extends Constraint> (definition: T) => definition;
