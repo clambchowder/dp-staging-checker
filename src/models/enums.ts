@@ -25,12 +25,12 @@ export enum TldType {
 
 
 export enum TeamType {
-    Wheat = 'Wheat',
-    SqueakyWheel = 'SqueakyWheel',
-    GhostBusters = 'GhostBusters',
     Agent = 'Agent',
-    InsureAnts = 'InsureAnts',
     Artemis = 'Artemis',
+    GhostBusters = 'GhostBusters',
+    InsureAnts = 'InsureAnts',
+    SqueakyWheel = 'SqueakyWheel',
+    Wheat = 'Wheat',
     Shared = 'Shared'
     // Platform = 'Platform',
     // Data = 'Data'
