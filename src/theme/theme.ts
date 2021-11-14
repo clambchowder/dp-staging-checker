@@ -50,6 +50,13 @@ const theme = createTheme({
         },
         "#root": {
           height: "100%"
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          "& *": {
+            animationDuration: "0.001ms !important",
+            animationIterationCount: "1 !important",
+            transitionDuration: "0.001ms !important"
+          }
         }
       },
     }
