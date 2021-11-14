@@ -20,7 +20,7 @@ const MultiSelect: FC<IMultiSelectProps> = ({name, displayName, filterParams, op
         : 'Multiple'
 
     return (
-        <FormControl sx={{ m: 1, width: 300 }}>
+        <FormControl sx={{ m: 1, width: '100%' }}>
             <InputLabel id={`${name}-multiple-checkbox-label`}>{displayName}</InputLabel>
             <Select
                 label={displayName}

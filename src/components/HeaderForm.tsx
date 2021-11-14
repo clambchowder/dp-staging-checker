@@ -1,21 +1,23 @@
-import { Stack, IconButton, SelectChangeEvent, Tooltip, Typography, Slide } from "@mui/material"
+import { Stack, IconButton, SelectChangeEvent, Tooltip, Typography, Slide, useMediaQuery } from "@mui/material"
 import { FilterAlt, Clear} from '@mui/icons-material'
 import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
 import { DeployStatus, TeamType, VerticalType } from "../models";
 import { DeployStatusDisplay, getKeyValuePairs, nameof, TeamTypeDisplay } from "../utils";
 import MultiSelect from "./MultiSelect";
 import { useMemo, useRef, useState } from "react";
-import { Box } from "@mui/system";
+import { Box, useTheme } from "@mui/system";
 
 const HeaderForms = () => {
     const [filterParams, setFilterParams] = useFilterParams();
-
     const hasFilters = useMemo(() => {
         return Object.values(filterParams).some(arr => arr.length)
     }, [filterParams])
 
     const [showFilters, setShowFilters] = useState(hasFilters)
     const containerRef = useRef(null);
+
+    const theme = useTheme();
+    const isBigScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
     const handleChange = (event: SelectChangeEvent<string[]>) => {
         const { target: { value, name } } = event;
@@ -33,7 +35,7 @@ const HeaderForms = () => {
             </Typography>
             <form >
                 <Stack
-                    direction="row"
+                    direction={isBigScreen ? 'row' : 'column-reverse'}
                     justifyContent="center"
                     alignItems="center"
                     minHeight={72}
@@ -43,15 +45,17 @@ const HeaderForms = () => {
                 >
 
                     <Slide
-                        direction="left"
+                        direction={isBigScreen ? 'left' : 'down'}
                         in={showFilters}
                         appear={false}
                         container={containerRef.current}
+                        unmountOnExit={true}
                         >
                         <Stack
-                            direction="row"
+                            direction={isBigScreen ? 'row' : 'column'}
                             justifyContent="center"
                             alignItems="center"
+                            width='100%'
                         >
                             <MultiSelect
                                 name={String(nameof<IFilterParams>("status"))}
@@ -77,29 +81,36 @@ const HeaderForms = () => {
                         </Stack>
                     </Slide>
                     <Box flexGrow={1} />
-                    {hasFilters && (
-                        <Tooltip title="Clear">
+                    <Stack
+                        sx={{alignSelf: isBigScreen ? 'center' : 'self-end'}}
+                        direction='row'
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        {hasFilters && (
+                            <Tooltip title="Clear">
+                                <IconButton
+                                    aria-label="clear"
+                                    size={'large'}
+                                    onClick={() => {
+                                        setFilterParams({});
+                                        setShowFilters(false);
+                                    }}
+                                >
+                                    <Clear />
+                                </IconButton>
+                            </Tooltip>
+                        )}
+                        <Tooltip title="Filter">
                             <IconButton
-                                aria-label="clear"
+                                aria-label="filter"
                                 size={'large'}
-                                onClick={() => {
-                                    setFilterParams({});
-                                    setShowFilters(false);
-                                }}
+                                onClick={() => setShowFilters(!showFilters)}
                             >
-                                <Clear />
+                                <FilterAlt />
                             </IconButton>
                         </Tooltip>
-                    )}
-                    <Tooltip title="Filter">
-                        <IconButton
-                            aria-label="filter"
-                            size={'large'}
-                            onClick={() => setShowFilters(!showFilters)}
-                        >
-                            <FilterAlt />
-                        </IconButton>
-                    </Tooltip>
+                    </Stack>
                 </Stack>
             </form>
         </header>
