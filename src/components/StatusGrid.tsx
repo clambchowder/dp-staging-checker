@@ -166,7 +166,10 @@ const StatusGrid = () => {
     const filteredRows = useMemo(()=> {
         const filtered = appVersions.filter((row) => {
             return (!filterParams.status?.length || filterParams.status.includes(row.deployStatus))
-                && (!filterParams.name?.length || filterParams.name.includes(row.name))
+                && (!filterParams.team?.length || filterParams.team.includes(row.team))
+                && (!filterParams.vertical?.length || filterParams.vertical.includes(row.vertical))
+
+
         })
         return filtered;
     }, [appVersions, filterParams])

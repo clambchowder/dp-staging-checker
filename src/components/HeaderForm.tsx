@@ -1,7 +1,7 @@
 import { SelectChangeEvent, Typography } from "@mui/material"
 import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
-import { DeployStatus } from "../models";
-import { DeployStatusDisplay, getKeyValuePairs, nameof } from "../utils";
+import { DeployStatus, TeamType, VerticalType } from "../models";
+import { DeployStatusDisplay, getKeyValuePairs, nameof, TeamTypeDisplay } from "../utils";
 import MultiSelect from "./MultiSelect";
 
 const HeaderForms = () => {
@@ -31,6 +31,20 @@ const HeaderForms = () => {
                     displayName={"Status"}
                     filterParams={filterParams}
                     options={getKeyValuePairs(DeployStatus, DeployStatusDisplay)}
+                    handleChange={handleChange}
+                />
+                <MultiSelect
+                    name={String(nameof<IFilterParams>("team"))}
+                    displayName={"Team"}
+                    filterParams={filterParams}
+                    options={getKeyValuePairs(TeamType, TeamTypeDisplay)}
+                    handleChange={handleChange}
+                />
+                 <MultiSelect
+                    name={String(nameof<IFilterParams>("vertical"))}
+                    displayName={"Vertical"}
+                    filterParams={filterParams}
+                    options={getKeyValuePairs(VerticalType)}
                     handleChange={handleChange}
                 />
             </form>

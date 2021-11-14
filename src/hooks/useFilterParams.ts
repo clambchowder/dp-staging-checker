@@ -1,21 +1,16 @@
 import { createSearchParams, useSearchParams } from "react-router-dom";
-import { AppNames } from "../config";
-import { AppType, DeployStatus, TeamType, VerticalType } from "../models";
+import { DeployStatus, TeamType, VerticalType } from "../models";
 import { CreateMethod } from "../utils";
 
 
 export interface IFilterParams extends Record<string, string[]> {
-    name: AppNames[];
     status: DeployStatus[];
-    type: AppType[];
     team: TeamType[];
     vertical: VerticalType[];
 }
 
 const createFilterParams: CreateMethod<IFilterParams> = (args) => ({
-    name: args?.name ?? [],
     status: args?.status ?? [],
-    type: args?.type ?? [],
     team: args?.team ?? [],
     vertical: args?.vertical ?? [],
 });
