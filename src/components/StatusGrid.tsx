@@ -1,4 +1,4 @@
-import { Chip, CircularProgress, Link, useMediaQuery, useTheme } from "@mui/material";
+import { Chip, CircularProgress, Link, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
 import { useEffect, useMemo, useState } from "react";
@@ -15,7 +15,7 @@ type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationI
 
 
 const StatusGrid = () => {
-    const [filterParams] = useFilterParams();
+    const [filterParams, setFilterParams] = useFilterParams();
     const [isLoading, setIsLoading] = useState(true)
     const [appVersions, setAppVersions] = useState<IApplicationInfoRow[]>([])
     const theme = useTheme();
@@ -191,6 +191,15 @@ const StatusGrid = () => {
                 sortingOrder={['desc', 'asc']}
                 sortModel={sortModel}
                 onSortModelChange={(model) => setSortModel(model)}
+                components={{
+                    NoRowsOverlay: () => (
+                      <Stack direction='row' alignItems="center" justifyContent="center" marginTop={10} columnGap={1}>
+                        <span>No Results</span>
+                        <span>-</span>
+                        <Link component='button' onClick={() => setFilterParams({})} fontSize={16} >Clear Filters</Link>
+                      </Stack>
+                    )
+                  }}
             />
         )}
 

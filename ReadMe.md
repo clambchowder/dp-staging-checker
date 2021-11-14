@@ -6,6 +6,8 @@
   * Add Partners Endpoints
 * Improve Loading animation
 * Refresh button / timer
+  * Stagger loads?
 * Theming - [Barlow](https://fonts.google.com/specimen/Barlow)
-
+* Expansion rows
+* Use more CSS
 
