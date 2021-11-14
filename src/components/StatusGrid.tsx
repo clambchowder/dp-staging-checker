@@ -193,10 +193,10 @@ const StatusGrid = () => {
                 onSortModelChange={(model) => setSortModel(model)}
                 components={{
                     NoRowsOverlay: () => (
-                      <Stack direction='row' alignItems="center" justifyContent="center" marginTop={10} columnGap={1}>
+                      <Stack direction='row' alignItems="center" justifyContent="center" marginTop={12} columnGap={1}>
                         <span>No Results</span>
                         <span>-</span>
-                        <Link component='button' onClick={() => setFilterParams({})} fontSize={16} >Clear Filters</Link>
+                        <Link component='button' onClick={() => setFilterParams({})} fontSize={'inherit'} >Clear Filters</Link>
                       </Stack>
                     )
                   }}

@@ -49,7 +49,9 @@ const theme = createTheme({
         },
         body: {
           backgroundColor: "rgb(241 241 241)",
-          height: "100vh"
+          height: "100vh",
+          paddingRight: "0 !important", // select dropdown shifts body layout
+          scrollbarGutter: 'stable'
         },
         "#root": {
           height: "100%"
