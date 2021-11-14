@@ -32,3 +32,7 @@ export interface IApplicationInfoRow extends IApplicationInfo, IEnvironmentData 
     deployStatus: DeployStatus
 }
 
+export interface IKeyValuePair {
+    key: string;
+    value: string;
+}

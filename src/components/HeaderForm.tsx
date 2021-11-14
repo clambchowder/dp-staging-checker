@@ -1,7 +1,8 @@
-import { Checkbox, FormControl, ListItemText, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material"
+import { SelectChangeEvent, Typography } from "@mui/material"
 import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
-import { DeployStatus } from "../models";
+import { DeployStatus, IKeyValuePair } from "../models";
 import { DeployStatusDisplay, nameof } from "../utils";
+import MultiSelect from "./MultiSelect";
 
 const HeaderForms = () => {
     const [filterParams, setFilterParams] = useFilterParams();
@@ -10,10 +11,14 @@ const HeaderForms = () => {
         const { target: { value, name } } = event;
         setFilterParams({
             ...filterParams,
-            [name]: value
+            [name]: value as string[]
         })
       };
 
+    const statusOptions: IKeyValuePair[] = Object.keys(DeployStatus).map((name) => ({
+        key: name,
+        value: DeployStatusDisplay[name]
+    }))
     // todo
     // clear search button
     // use navigation handler
@@ -24,27 +29,13 @@ const HeaderForms = () => {
                 DP Staging Checker
             </Typography>
             <form >
-                <FormControl sx={{ m: 1, width: 300 }}>
-                    <InputLabel id="status-multiple-checkbox-label">Status</InputLabel>
-                    <Select
-                        label={'Status'}
-                        labelId={'status-multiple-checkbox-label'}
-                        multiple={true}
-                        onChange={handleChange}
-                        name={String(nameof<IFilterParams>("status"))}
-                        value={filterParams.status as string[]}
-                        renderValue={(selected) => (
-                            selected.length > 2 ? 'Multiple' : selected.map((x) => DeployStatusDisplay[x as DeployStatus]).join(", ")
-                        )}
-                    >
-                    {Object.keys(DeployStatus).map((name) => (
-                        <MenuItem key={name} value={name}>
-                            <Checkbox checked={filterParams.status.includes(name as DeployStatus)} />
-                            <ListItemText primary={DeployStatusDisplay[name]} />
-                        </MenuItem>
-                    ))}
-                    </Select>
-                </FormControl>
+                <MultiSelect
+                    name={String(nameof<IFilterParams>("status"))}
+                    displayName={"Status"}
+                    filterParams={filterParams}
+                    options={statusOptions}
+                    handleChange={handleChange}
+                />
             </form>
         </header>
     )
