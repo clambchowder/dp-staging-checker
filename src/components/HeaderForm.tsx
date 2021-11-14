@@ -1,7 +1,7 @@
 import { SelectChangeEvent, Typography } from "@mui/material"
 import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
-import { DeployStatus, IKeyValuePair } from "../models";
-import { DeployStatusDisplay, nameof } from "../utils";
+import { DeployStatus } from "../models";
+import { DeployStatusDisplay, getKeyValuePairs, nameof } from "../utils";
 import MultiSelect from "./MultiSelect";
 
 const HeaderForms = () => {
@@ -13,12 +13,9 @@ const HeaderForms = () => {
             ...filterParams,
             [name]: value as string[]
         })
-      };
+    };
 
-    const statusOptions: IKeyValuePair[] = Object.keys(DeployStatus).map((name) => ({
-        key: name,
-        value: DeployStatusDisplay[name]
-    }))
+
     // todo
     // clear search button
     // use navigation handler
@@ -33,7 +30,7 @@ const HeaderForms = () => {
                     name={String(nameof<IFilterParams>("status"))}
                     displayName={"Status"}
                     filterParams={filterParams}
-                    options={statusOptions}
+                    options={getKeyValuePairs(DeployStatus, DeployStatusDisplay)}
                     handleChange={handleChange}
                 />
             </form>

@@ -36,3 +36,7 @@ export interface IKeyValuePair {
     key: string;
     value: string;
 }
+
+export interface StringEnum {
+    [id: string]: string
+}

@@ -1,5 +1,5 @@
 import { red, deepOrange, blue, green } from "@mui/material/colors";
-import { IApplicationData, IApplicationOptions, IEnvironmentValue,  AppType, DeployStatus, EnvironmentType, TeamType, TldType, VerticalType } from "../models";
+import { IApplicationData, IApplicationOptions, IEnvironmentValue,  AppType, DeployStatus, EnvironmentType, TeamType, TldType, VerticalType, IKeyValuePair, StringEnum } from "../models";
 import { AppNames } from "../config";
 
 export type CreateMethod<T> = (args?: Partial<T>) => T;
@@ -85,3 +85,10 @@ export const DeployStatusColor: Record<DeployStatus, string> = {
 export const isDeployedUpTo = (val: DeployStatus, max: DeployStatus): boolean =>
     DeployStatusStage[val] >= DeployStatusStage[max]
 
+
+export const getKeyValuePairs = (enumOptions: StringEnum, displayMap?: Record<string, string>): IKeyValuePair[] => {
+    return Object.keys(enumOptions).map((name) => ({
+        key: name,
+        value: displayMap ? displayMap[name] : name
+    }))
+}
