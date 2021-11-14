@@ -2,11 +2,10 @@
 
 ## Todo
 
-* Add Application Endpoints
-  * Add More Apps
-* Add Team field + filter
-* Add Insurance / Distribution Vertical field + filter
-* Add Filters
-* [Barlow](https://fonts.google.com/specimen/Barlow)
+* Netlify Func to EndRun CORS
+  * Add Partners Endpoints
+* Improve Loading animation
+* Refresh button / timer
+* Theming - [Barlow](https://fonts.google.com/specimen/Barlow)
 
 
