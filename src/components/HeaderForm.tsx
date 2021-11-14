@@ -1,4 +1,4 @@
-import { Stack, IconButton, SelectChangeEvent, Tooltip, Typography, Slide, useMediaQuery } from "@mui/material"
+import { Stack, IconButton, SelectChangeEvent, Tooltip, Slide, useMediaQuery } from "@mui/material"
 import { FilterAlt, Clear} from '@mui/icons-material'
 import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
 import { DeployStatus, TeamType, VerticalType } from "../models";
@@ -30,9 +30,6 @@ const HeaderForms = () => {
 
     return (
         <header>
-            <Typography variant={'h1'} sx={{marginTop: 0, textAlign: 'center'}}>
-                DP Staging Checker
-            </Typography>
             <form >
                 <Stack
                     direction={isBigScreen ? 'row' : 'column-reverse'}

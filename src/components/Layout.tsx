@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import StatusGrid from "./StatusGrid";
 import HeaderForms from "./HeaderForm";
 
@@ -14,6 +14,9 @@ function Layout() {
         padding: 5
       }}
     >
+      <Typography variant={'h1'} sx={{marginTop: 0, textAlign: 'center'}}>
+        DP Staging Checker
+      </Typography>
       <HeaderForms />
       <main style={{flexGrow: 1}}>
         <StatusGrid />
