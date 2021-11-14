@@ -44,6 +44,9 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          scrollbarGutter: 'stable'
+        },
         body: {
           backgroundColor: "rgb(241 241 241)",
           height: "100vh"
