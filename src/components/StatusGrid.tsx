@@ -1,7 +1,8 @@
-import { Chip, CircularProgress, Link, Stack, useMediaQuery, useTheme } from "@mui/material";
+import { Refresh } from "@mui/icons-material";
+import { Chip, CircularProgress, IconButton, Link, Stack, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
-import { useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import useFilterParams from "../hooks/useFilterParams";
 import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, TeamType } from "../models";
 import { getAppVersions } from "../services/app-versions";
@@ -14,9 +15,10 @@ type IRenderStatusProps = GridRenderCellParams<DeployStatus, IApplicationInfoRow
 type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationInfoRow, any>
 
 
-const StatusGrid = () => {
+const StatusGrid: FC = () => {
     const [filterParams, setFilterParams] = useFilterParams();
     const [isLoading, setIsLoading] = useState(true)
+    const [loadDateTime, setLoadDateTime] = useState<Date | null>(null)
     const [appVersions, setAppVersions] = useState<IApplicationInfoRow[]>([])
     const theme = useTheme();
     const isPhoneScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -33,7 +35,8 @@ const StatusGrid = () => {
         const resp = await getAppVersions()
         setAppVersions(resp)
         setIsLoading(false)
-    }
+        setLoadDateTime(new Date())
+    };
 
     useEffect(() => {
         hydrateData()
@@ -175,35 +178,61 @@ const StatusGrid = () => {
     }, [appVersions, filterParams])
 
 
-    return <div>
+    return <>
         {isLoading ? (
             <CircularProgress />
         ) : (
-            <DataGrid
-                style={{border: 'none'}}
-                rows={filteredRows}
-                columns={cols}
-                density={"standard"}
-                autoHeight={true}
-                hideFooter={true}
-                disableColumnMenu={true}
-                disableVirtualization={true}
-                sortingOrder={['desc', 'asc']}
-                sortModel={sortModel}
-                onSortModelChange={(model) => setSortModel(model)}
-                components={{
-                    NoRowsOverlay: () => (
-                      <Stack direction='row' alignItems="center" justifyContent="center" marginTop={12} columnGap={1}>
-                        <span>No Results</span>
-                        <span>-</span>
-                        <Link component='button' onClick={() => setFilterParams({})} fontSize={'inherit'} >Clear Filters</Link>
-                      </Stack>
-                    )
-                  }}
-            />
+            <>
+                <Stack
+                    direction='row'
+                    sx={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'absolute',
+                        top: 8,
+                        right: 16
+                }}>
+                    <Typography variant='body2' paddingBottom={.5}>
+                        {loadDateTime?.toLocaleTimeString([], {
+                            hour: 'numeric',
+                            minute: 'numeric'
+                        })}
+                    </Typography>
+                    <Tooltip title="Refresh Data">
+                        <IconButton
+                            aria-label="Refresh Data"
+                            onClick={() => hydrateData()}
+                        >
+                            <Refresh />
+                        </IconButton>
+                    </Tooltip>
+                </Stack>
+                <DataGrid
+                    style={{border: 'none'}}
+                    rows={filteredRows}
+                    columns={cols}
+                    density={"standard"}
+                    autoHeight={true}
+                    hideFooter={true}
+                    disableColumnMenu={true}
+                    disableVirtualization={true}
+                    sortingOrder={['desc', 'asc']}
+                    sortModel={sortModel}
+                    onSortModelChange={(model) => setSortModel(model)}
+                    components={{
+                        NoRowsOverlay: () => (
+                        <Stack direction='row' alignItems="center" justifyContent="center" marginTop={12} columnGap={1}>
+                            <span>No Results</span>
+                            <span>-</span>
+                            <Link component='button' onClick={() => setFilterParams({})} fontSize={'inherit'} >Clear Filters</Link>
+                        </Stack>
+                        )
+                    }}
+                />
+            </>
         )}
 
-    </div>
+    </>
 }
 
 export default StatusGrid;
