@@ -1,11 +1,12 @@
-import { Stack, IconButton, SelectChangeEvent, Tooltip, Slide, useMediaQuery } from "@mui/material"
+import { Stack, Box, IconButton, SelectChangeEvent, Tooltip, useMediaQuery } from "@mui/material"
 import { FilterAlt, Clear} from '@mui/icons-material'
+import { useTheme } from "@mui/system";
+import { useMemo, useState } from "react";
 import useFilterParams, { IFilterParams } from "../hooks/useFilterParams";
 import { DeployStatus, TeamType, VerticalType } from "../models";
 import { DeployStatusDisplay, getKeyValuePairs, nameof, TeamTypeDisplay } from "../utils";
 import MultiSelect from "./MultiSelect";
-import { useMemo, useRef, useState } from "react";
-import { Box, useTheme } from "@mui/system";
+import SlideAndGrow from "./SlideAndGrow"
 
 const HeaderForms = () => {
     const [filterParams, setFilterParams] = useFilterParams();
@@ -14,7 +15,6 @@ const HeaderForms = () => {
     }, [filterParams])
 
     const [showFilters, setShowFilters] = useState(hasFilters)
-    const containerRef = useRef(null);
 
     const theme = useTheme();
     const isBigScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -37,17 +37,15 @@ const HeaderForms = () => {
                     alignItems="center"
                     minHeight={72}
                     spacing={2}
-                    ref={containerRef}
                     overflow="hidden"
                 >
-
-                    <Slide
+                    <SlideAndGrow
                         direction={isBigScreen ? 'left' : 'down'}
                         in={showFilters}
                         appear={false}
-                        container={containerRef.current}
                         unmountOnExit={true}
-                        >
+
+                    >
                         <Stack
                             direction={isBigScreen ? 'row' : 'column'}
                             justifyContent="center"
@@ -76,7 +74,8 @@ const HeaderForms = () => {
                                 handleChange={handleChange}
                                 />
                         </Stack>
-                    </Slide>
+
+                    </SlideAndGrow>
                     <Box flexGrow={1} />
                     <Stack
                         sx={{alignSelf: isBigScreen ? 'center' : 'self-end'}}
