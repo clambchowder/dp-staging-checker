@@ -7,6 +7,8 @@ export type CreateMethod<T> = (args?: Partial<T>) => T;
 export const nameof = <T>(name: keyof T) => name;
 export const DefineIdentity = <Constraint> () => <T extends Constraint> (definition: T) => definition;
 
+export const sleep = (timeout: number): Promise<void> => new Promise(resolve => setTimeout(resolve, timeout));
+
 export const toProperCase = (str: string) => str.length === 0 ? str : str[0].toUpperCase() + str.substr(1)
 export const toTitleCase = (str: string) => str.split(' ').map(toProperCase).join(' ');
 
