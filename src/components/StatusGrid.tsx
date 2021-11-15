@@ -2,7 +2,7 @@ import { Refresh } from "@mui/icons-material";
 import { Chip, CircularProgress, IconButton, Link, Stack, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { SxProps, Theme } from "@mui/system";
 import { DataGrid, GridColumns, GridEnrichedColDef, GridRenderCellParams, GridSortModel } from "@mui/x-data-grid";
-import { FC, useCallback, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import useFilterParams from "../hooks/useFilterParams";
 import { DeployStatus, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, TeamType } from "../models";
 import { getAppVersions } from "../services/app-versions";
