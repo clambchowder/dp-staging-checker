@@ -10,12 +10,8 @@ import SlideAndGrow from "./SlideAndGrow"
 
 const HeaderForms = () => {
     const [filterParams, setFilterParams] = useFilterParams();
-    const hasFilters = useMemo(() => {
-        return Object.values(filterParams).some(arr => arr.length)
-    }, [filterParams])
-
+    const hasFilters = useMemo(() => Object.values(filterParams).some(arr => arr.length), [filterParams])
     const [showFilters, setShowFilters] = useState(hasFilters)
-
     const theme = useTheme();
     const isBigScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
@@ -26,7 +22,6 @@ const HeaderForms = () => {
             [name]: value as string[]
         })
     };
-
 
     return (
         <header>
@@ -83,20 +78,22 @@ const HeaderForms = () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        {hasFilters && (
-                            <Tooltip title="Clear">
-                                <IconButton
-                                    aria-label="clear"
-                                    size={'large'}
-                                    onClick={() => {
-                                        setFilterParams({});
-                                        setShowFilters(false);
-                                    }}
-                                >
-                                    <Clear />
-                                </IconButton>
-                            </Tooltip>
-                        )}
+
+                        <Tooltip title="Clear">
+                            <IconButton
+                                aria-label="clear"
+                                size={'large'}
+                                onClick={() => {
+                                    setFilterParams({});
+                                    setShowFilters(false);
+                                }}
+                                sx={{
+                                    visibility: hasFilters ? 'visible' : 'hidden'
+                                }}
+                            >
+                                <Clear />
+                            </IconButton>
+                        </Tooltip>
                         <Tooltip title="Filter">
                             <IconButton
                                 aria-label="filter"
