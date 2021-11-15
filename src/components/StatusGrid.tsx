@@ -18,6 +18,8 @@ type IRenderEnvCellProps = GridRenderCellParams<IEnvironmentValue, IApplicationI
 const StatusGrid: FC = () => {
     const [filterParams, setFilterParams] = useFilterParams();
     const [isLoading, setIsLoading] = useState(true)
+    const [isRefreshing, setIsRefreshing] = useState(false)
+
     const [loadDateTime, setLoadDateTime] = useState<Date | null>(null)
     const [appVersions, setAppVersions] = useState<IApplicationInfoRow[]>([])
     const theme = useTheme();
@@ -35,6 +37,7 @@ const StatusGrid: FC = () => {
         const resp = await getAppVersions()
         setAppVersions(resp)
         setIsLoading(false)
+        setIsRefreshing(false)
         setLoadDateTime(new Date())
     };
 
@@ -180,7 +183,13 @@ const StatusGrid: FC = () => {
 
     return <>
         {isLoading ? (
-            <CircularProgress />
+            <Stack
+                height={100}
+                justifyContent="center"
+                alignItems="center"
+            >
+                <CircularProgress />
+            </Stack>
         ) : (
             <>
                 <Stack
@@ -201,7 +210,11 @@ const StatusGrid: FC = () => {
                     <Tooltip title="Refresh Data">
                         <IconButton
                             aria-label="Refresh Data"
-                            onClick={() => hydrateData()}
+                            disabled={isRefreshing}
+                            onClick={() => {
+                                setIsRefreshing(true)
+                                void hydrateData();
+                            }}
                         >
                             <Refresh />
                         </IconButton>

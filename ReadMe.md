@@ -5,7 +5,7 @@
 * Netlify Func to EndRun CORS
   * Add Partners Endpoints
 * Improve Loading animation
-* Refresh button / timer
+* Refresh timer?
   * Stagger loads?
 * Theming - [Barlow](https://fonts.google.com/specimen/Barlow)
 * Expansion rows
