@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:mock": "npx cross-env REACT_APP_USE_MOCK_DATA=true react-scripts start",
+    "start:client": "npx cross-env REACT_APP_USE_CLIENT_FETCH=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

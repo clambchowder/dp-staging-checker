@@ -4,8 +4,8 @@ import * as AppVersionApi from './app-versions-api'
 
 const getAppVersionInstance = () => {
     if (Boolean(process.env.REACT_APP_USE_MOCK_DATA)) return AppVersionMock
-    if (Boolean(process.env.CI)) return AppVersionApi
-    return AppVersionClient
+    if (Boolean(process.env.REACT_APP_USE_CLIENT_FETCH)) return AppVersionClient
+    return AppVersionApi
 
 }
 
