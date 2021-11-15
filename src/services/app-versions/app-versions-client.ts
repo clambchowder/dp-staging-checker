@@ -30,6 +30,7 @@ export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
                 const version = sanitizeVersion(data.Message || data.message)
                 return [env, {url, version} as IEnvironmentValue]
             } catch (error) {
+                console.log(error);
                 return [env, {url, error} as IEnvironmentValue]
             }
 
