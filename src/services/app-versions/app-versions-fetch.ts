@@ -1,6 +1,8 @@
 import { AppConfig, AppNames } from "../../config"
 import { IApplicationData, IApplicationOptions, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IEnvironmentData } from "../../models"
 import { getDeployStatus, getStatusUrl, sanitizeVersion, TeamTypeVertical } from "../../utils"
+import { isoFetchJson } from "../../utils/node-fetch"
+
 
 
 export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
@@ -25,8 +27,7 @@ export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
 
         const envEntriesPromises = Object.entries(app.environments).map(async ([env, {url}]) => {
             try {
-                const resp = await fetch(url)
-                const data = await resp.json()
+                const data = await isoFetchJson(url)
                 const version = sanitizeVersion(data.Message || data.message)
                 return [env, {url, version} as IEnvironmentValue]
             } catch (error) {
