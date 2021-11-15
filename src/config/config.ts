@@ -17,7 +17,7 @@ export const AppConfig = defineApps({
     Location: { type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=120&branchFilter=55' },
 
     Org: { type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435' },
-    // 'Partners-SaaS': { type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', displayName: 'Partners SaaS' },
+    'Partners-SaaS': { type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', displayName: 'Partners SaaS' },
 
     Payments: { type: AppType.Api, team: TeamType.Wheat, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=127&branchFilter=176' },
     Search: { type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=151&branchFilter=5609' },
