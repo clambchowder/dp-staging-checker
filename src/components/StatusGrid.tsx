@@ -65,6 +65,7 @@ const StatusGrid: FC = () => {
         {
             field: nameof<IApplicationInfoRow>("name"),
             headerName: 'Name',
+            renderCell: ({row}: IRenderCellProps) => row.displayName ?? row.name,
             minWidth: 150,
             flex: 1
         },

@@ -28,7 +28,7 @@ export const AppConfig = defineApps({
     Rating: { type: AppType.Api, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?view=mine&_a=releases&definitionId=22' },
 
     FastPass: { type: AppType.App, team: TeamType.GhostBusters, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=137&branchFilter=500' },
-    'Secure-Checkout': { type: AppType.App, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_release?_a=releases&view=mine&definitionId=73' },
+    'Secure-Checkout': { type: AppType.App, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_release?_a=releases&view=mine&definitionId=73', displayName: 'Secure Checkout' },
     Marketplace: { type: AppType.App, team: TeamType.Wheat, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=145&branchFilter=5416' },
     'Marketplace-Reports': { type: AppType.App, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=157&branchFilter=6292', displayName: 'Marketplace Reports' },
 
