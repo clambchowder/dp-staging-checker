@@ -14,14 +14,6 @@ export const AppConfig: Array<IApplicationOptions> = [
     { name: 'Links', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=121&branchFilter=3188' },
     { name: 'Location', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=120&branchFilter=55' },
     { name: 'Org', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435' },
-    { name: 'Partners-SaaS', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-    { name: 'Partners-SaasPlus', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-    { name: 'Partners-Cox', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-    { name: 'Partners-1677', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-    { name: 'Partners-2147', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-    { name: 'Partners-3742', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-    { name: 'Partners-8783', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
-
     { name: 'Payments', type: AppType.Api, team: TeamType.Wheat, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=127&branchFilter=176' },
     { name: 'Rating', type: AppType.Api, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?view=mine&_a=releases&definitionId=22' },
     { name: 'Reporting', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=172&branchFilter=7863' },
@@ -29,6 +21,8 @@ export const AppConfig: Array<IApplicationOptions> = [
     { name: 'Surehits', type: AppType.Api, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=116&branchFilter=4858' },
     { name: 'Travelers', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=170&branchFilter=7445' },
     { name: 'Vehicleid', type: AppType.Api, team: TeamType.Wheat, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=128&branchFilter=56' },
+
+    { name: 'Partners-SaaS', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
 
     { name: 'Cot', type: AppType.App, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=135&branchFilter=2108', tld: TldType.cloud },
     { name: 'FastPass', type: AppType.App, team: TeamType.GhostBusters, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=137&branchFilter=500' },
