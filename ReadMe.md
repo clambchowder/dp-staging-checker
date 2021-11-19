@@ -2,6 +2,11 @@
 
 ## Todo
 
+* Add sort to URL persist
+* Add multi-sort
+* Show filter on fresh navigation if filtered
+  * (Clear X Filters)
+* Formatted Copy
 * Add Partners Endpoints
 * Improve Loading animation
 * Refresh timer?
