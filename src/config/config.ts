@@ -14,7 +14,14 @@ export const AppConfig: Array<IApplicationOptions> = [
     { name: 'Links', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=121&branchFilter=3188' },
     { name: 'Location', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=120&branchFilter=55' },
     { name: 'Org', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435' },
-    { name: 'Partners-SaaS', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', displayName: 'Partners SaaS', limitsCors: true },
+    { name: 'Partners-SaaS', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+    { name: 'Partners-SaasPlus', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+    { name: 'Partners-Cox', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+    { name: 'Partners-1677', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+    { name: 'Partners-2147', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+    { name: 'Partners-3742', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+    { name: 'Partners-8783', type: AppType.Api, team: TeamType.SqueakyWheel, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385', limitsCors: true },
+
     { name: 'Payments', type: AppType.Api, team: TeamType.Wheat, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=127&branchFilter=176' },
     { name: 'Rating', type: AppType.Api, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?view=mine&_a=releases&definitionId=22' },
     { name: 'Reporting', type: AppType.Api, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=172&branchFilter=7863' },
@@ -25,9 +32,9 @@ export const AppConfig: Array<IApplicationOptions> = [
 
     { name: 'Cot', type: AppType.App, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=135&branchFilter=2108', tld: TldType.cloud },
     { name: 'FastPass', type: AppType.App, team: TeamType.GhostBusters, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=137&branchFilter=500' },
-    { name: 'Marketplace-Reports', type: AppType.App, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=157&branchFilter=6292', displayName: 'Marketplace Reports' },
+    { name: 'Marketplace-Reports', type: AppType.App, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=157&branchFilter=6292' },
     { name: 'Marketplace', type: AppType.App, team: TeamType.Wheat, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=145&branchFilter=5416' },
-    { name: 'Secure-Checkout', type: AppType.App, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_release?_a=releases&view=mine&definitionId=73', displayName: 'Secure Checkout' },
+    { name: 'Secure-Checkout', type: AppType.App, team: TeamType.InsureAnts, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_release?_a=releases&view=mine&definitionId=73' },
 
     { name: 'v1', type: AppType.v1, team: TeamType.Shared, pipelineUrl: 'https://dev.azure.com/dealerpolicy/DealerPolicy/_build?_a=releases&view=mine&definitionId=20', separateReleaseBranch: true }
 ];

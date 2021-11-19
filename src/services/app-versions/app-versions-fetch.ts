@@ -45,7 +45,7 @@ export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
     const appRows: IApplicationInfoRow[] = appStatuses.map(app => ({
         ...app,
         ...app.environments,
-        id: app.displayName ?? app.name,
+        id: app.displayName ?? app.name.replace('-', ' '),
         deployStatus: getDeployStatus(app),
     }))
 
