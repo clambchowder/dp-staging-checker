@@ -1,11 +1,9 @@
 import { red, deepOrange, blue, green } from "@mui/material/colors";
 import { IApplicationData, IApplicationOptions, IEnvironmentValue,  AppType, DeployStatus, EnvironmentType, TeamType, TldType, VerticalType, IKeyValuePair, StringEnum } from "../models";
-import { AppNames } from "../config";
 
 export type CreateMethod<T> = (args?: Partial<T>) => T;
 
 export const nameof = <T>(name: keyof T) => name;
-export const DefineIdentity = <Constraint> () => <T extends Constraint> (definition: T) => definition;
 
 export const sleep = (timeout: number): Promise<void> => new Promise(resolve => setTimeout(resolve, timeout));
 export const isServer = (): boolean => !(typeof window != 'undefined' && window.document);
@@ -18,7 +16,7 @@ export const sanitizeVersion = (message: string): string => {
 }
 
 
-export const getStatusUrl = (name: AppNames, appOptions: IApplicationOptions,env: EnvironmentType): string => {
+export const getStatusUrl = (name: string, appOptions: IApplicationOptions,env: EnvironmentType): string => {
     const envSubdomain = env === EnvironmentType.prod ? "" : `.${env}`
     if (appOptions.type === AppType.v1) return `https://app${envSubdomain}.dealerpolicy.com/status.php`
     if (appOptions.type === AppType.Api) return `https://api-${name}${envSubdomain}.dealerpolicy.cloud/status`

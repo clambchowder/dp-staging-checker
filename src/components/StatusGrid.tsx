@@ -60,12 +60,7 @@ const StatusGrid: FC = () => {
     const cols: GridColumns = [
         {
             field: nameof<IApplicationInfoRow>("id"),
-            hide: true,
-        },
-        {
-            field: nameof<IApplicationInfoRow>("name"),
             headerName: 'Name',
-            renderCell: ({row}: IRenderCellProps) => row.displayName ?? row.name,
             minWidth: 150,
             flex: 1
         },

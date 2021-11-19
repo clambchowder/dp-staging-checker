@@ -1,17 +1,17 @@
-import { AppNames } from "../config/config";
 import { AppType, DeployStatus, EnvironmentType, TeamType, TldType, VerticalType } from "./enums";
 
 export interface IApplicationOptions {
+    name: string;
     type: AppType;
     team: TeamType;
     pipelineUrl: string;
     displayName?: string;
     tld?: TldType;
-    separateReleaseBranch?: boolean
+    separateReleaseBranch?: boolean;
+    limitsCors?: boolean;
 }
 
 export interface IApplicationInfo extends IApplicationOptions {
-    name: AppNames;
     vertical: VerticalType;
 }
 

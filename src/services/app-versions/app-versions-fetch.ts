@@ -1,5 +1,5 @@
-import { AppConfig, AppNames } from "../../config"
-import { IApplicationData, IApplicationOptions, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IEnvironmentData } from "../../models"
+import { AppConfig } from "../../config"
+import { IApplicationData, EnvironmentType, IApplicationInfoRow, IEnvironmentValue, IEnvironmentData } from "../../models"
 import { getDeployStatus, getStatusUrl, sanitizeVersion, TeamTypeVertical } from "../../utils"
 import { isoFetchJson } from "../../utils/node-fetch"
 
@@ -7,21 +7,15 @@ import { isoFetchJson } from "../../utils/node-fetch"
 
 export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
 
-    const appConfigEntires = Object.entries<AppNames, IApplicationOptions>(AppConfig)
-
-    const appData: IApplicationData[] = appConfigEntires.map(([name, info]) => {
-        const appName = name as AppNames;
-        return {
-            ...info,
-            name: appName,
-            vertical: TeamTypeVertical[info.team],
-            environments: {
-                qa: { url: getStatusUrl(appName, info, EnvironmentType.qa) },
-                staging: { url: getStatusUrl(appName, info, EnvironmentType.staging) },
-                prod: { url: getStatusUrl(appName, info, EnvironmentType.prod) }
-            }
+    const appData: IApplicationData[] = AppConfig.map((config) => ({
+        ...config,
+        vertical: TeamTypeVertical[config.team],
+        environments: {
+            qa: { url: getStatusUrl(config.name, config, EnvironmentType.qa) },
+            staging: { url: getStatusUrl(config.name, config, EnvironmentType.staging) },
+            prod: { url: getStatusUrl(config.name, config, EnvironmentType.prod) }
         }
-    })
+    }))
 
     const appStatusPromises = appData.map(async (app) => {
 
@@ -51,7 +45,7 @@ export const getAppVersions = async (): Promise<IApplicationInfoRow[]> => {
     const appRows: IApplicationInfoRow[] = appStatuses.map(app => ({
         ...app,
         ...app.environments,
-        id: app.name,
+        id: app.displayName ?? app.name,
         deployStatus: getDeployStatus(app),
     }))
 
