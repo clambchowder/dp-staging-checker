@@ -2,7 +2,6 @@ import { Container, Typography } from "@mui/material";
 import StatusGrid from "./StatusGrid";
 import HeaderForms from "./HeaderForm";
 
-
 function Layout() {
   return (
     <Container
@@ -11,18 +10,17 @@ function Layout() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        padding: 5
+        padding: 5,
       }}
     >
-      <Typography variant={'h1'} sx={{marginTop: 0, textAlign: 'center'}}>
-        DP Staging Checker
+      <Typography variant={"h1"} sx={{ marginTop: 0, textAlign: "center" }}>
+        DP Release Checker
       </Typography>
       <HeaderForms />
-      <main style={{flexGrow: 1}}>
+      <main style={{ flexGrow: 1 }}>
         <StatusGrid />
       </main>
-
-  </Container>
+    </Container>
   );
 }
 
