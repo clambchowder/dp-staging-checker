@@ -219,7 +219,7 @@ const StatusGrid: FC = () => {
   ];
 
   const filteredRows = useMemo(() => {
-    const filtered = appVersions.filter((row) => {
+    const filtered = appVersions?.filter((row) => {
       return (
         (!filterParams.status?.length ||
           filterParams.status.includes(row.deployStatus)) &&
