@@ -30,6 +30,13 @@ export const AppConfig: Array<IApplicationOptions> = [
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=117&branchFilter=4613",
   },
   {
+    name: "Command Center Orchestrator",
+    type: AppType.Api,
+    team: TeamType.Artemis,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=186&branchFilter=9212",
+  },
+  {
     name: "Communication",
     type: AppType.Api,
     team: TeamType.Shared,
