@@ -30,11 +30,12 @@ export const AppConfig: Array<IApplicationOptions> = [
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=117&branchFilter=4613",
   },
   {
-    name: "Command Center Orchestrator",
+    name: "Admin",
     type: AppType.Api,
     team: TeamType.Artemis,
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=186&branchFilter=9212",
+    displayName: "Command Center Orchestrator",
   },
   {
     name: "Communication",
@@ -159,18 +160,20 @@ export const AppConfig: Array<IApplicationOptions> = [
     limitsCors: true,
   },
   {
-    name: "Command Center",
+    name: "Admin",
     type: AppType.App,
     team: TeamType.Artemis,
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=182&branchFilter=9053",
+    displayName: "Command Center",
   },
   {
-    name: "New Agent",
+    name: "Agent",
     type: AppType.App,
     team: TeamType.GhostBusters,
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=181&branchFilter=8875",
+    displayName: "New Agent App",
   },
   {
     name: "Cot",
