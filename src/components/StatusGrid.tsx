@@ -219,6 +219,10 @@ const StatusGrid: FC = () => {
   ];
 
   const filteredRows = useMemo(() => {
+    // check if appVersions is empty
+    if (appVersions.length === 0) {
+      return appVersions;
+    }
     const filtered = appVersions?.filter((row) => {
       return (
         (!filterParams.status?.length ||
