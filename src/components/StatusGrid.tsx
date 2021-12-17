@@ -220,19 +220,20 @@ const StatusGrid: FC = () => {
 
   const filteredRows = useMemo(() => {
     // check if appVersions is empty
-    if (appVersions.length === 0) {
-      return appVersions;
+    try {
+      return appVersions.filter((row) => {
+        return (
+          (!filterParams.status?.length ||
+            filterParams.status.includes(row.deployStatus)) &&
+          (!filterParams.team?.length ||
+            filterParams.team.includes(row.team)) &&
+          (!filterParams.vertical?.length ||
+            filterParams.vertical.includes(row.vertical))
+        );
+      });
+    } catch (e) {
+      return [];
     }
-    const filtered = appVersions?.filter((row) => {
-      return (
-        (!filterParams.status?.length ||
-          filterParams.status.includes(row.deployStatus)) &&
-        (!filterParams.team?.length || filterParams.team.includes(row.team)) &&
-        (!filterParams.vertical?.length ||
-          filterParams.vertical.includes(row.vertical))
-      );
-    });
-    return filtered;
   }, [appVersions, filterParams]);
 
   return (
