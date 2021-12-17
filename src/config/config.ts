@@ -152,14 +152,6 @@ export const AppConfig: Array<IApplicationOptions> = [
     limitsCors: true,
   },
   {
-    name: "Agent",
-    type: AppType.App,
-    team: TeamType.GhostBusters,
-    pipelineUrl:
-      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=181&branchFilter=8875",
-    displayName: "New Agent App",
-  },
-  {
     name: "Cot",
     type: AppType.App,
     team: TeamType.InsureAnts,
