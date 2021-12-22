@@ -94,6 +94,14 @@ export const AppConfig: Array<IApplicationOptions> = [
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435",
   },
   {
+    name: "Marketplace",
+    type: AppType.Api,
+    team: TeamType.Wheat,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=161&branchFilter=6754",
+    displayName: "Marketplace Func",
+  },
+  {
     name: "Payments",
     type: AppType.Api,
     team: TeamType.Wheat,
