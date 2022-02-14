@@ -2,6 +2,13 @@ import { IApplicationOptions, TeamType, TldType, AppType } from "../models";
 
 export const AppConfig: Array<IApplicationOptions> = [
   {
+    name: "Agent",
+    type: AppType.Api,
+    team: TeamType.GhostBusters,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=184&branchFilter=9131",
+  },
+  {
     name: "Agency",
     type: AppType.Api,
     team: TeamType.Agent,
@@ -158,6 +165,13 @@ export const AppConfig: Array<IApplicationOptions> = [
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385",
     limitsCors: true,
+  },
+  {
+    name: "Agent",
+    type: AppType.App,
+    team: TeamType.GhostBusters,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=181&branchFilter=8875",
   },
   {
     name: "Cot",
