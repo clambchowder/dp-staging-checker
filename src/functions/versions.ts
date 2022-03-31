@@ -12,7 +12,7 @@ const handler: Handler = async (_event, _context) => {
       body: response,
     };
   } catch (err) {
-    return { statusCode: 999, body: err };
+    return { statusCode: 999, body: "error" };
   }
 };
 
