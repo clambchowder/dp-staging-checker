@@ -2,13 +2,6 @@ import { IApplicationOptions, TeamType, TldType, AppType } from "../models";
 
 export const AppConfig: Array<IApplicationOptions> = [
   {
-    name: "Agent",
-    type: AppType.Api,
-    team: TeamType.GhostBusters,
-    pipelineUrl:
-      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=184&branchFilter=9131",
-  },
-  {
     name: "Agency",
     type: AppType.Api,
     team: TeamType.Agent,
@@ -101,14 +94,6 @@ export const AppConfig: Array<IApplicationOptions> = [
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=169&branchFilter=7435",
   },
   {
-    name: "Marketplace",
-    type: AppType.Api,
-    team: TeamType.Wheat,
-    pipelineUrl:
-      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=161&branchFilter=6754",
-    displayName: "Marketplace Func",
-  },
-  {
     name: "Payments",
     type: AppType.Api,
     team: TeamType.Wheat,
@@ -165,13 +150,6 @@ export const AppConfig: Array<IApplicationOptions> = [
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=119&branchFilter=4385",
     limitsCors: true,
-  },
-  {
-    name: "Agent",
-    type: AppType.App,
-    team: TeamType.GhostBusters,
-    pipelineUrl:
-      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=181&branchFilter=8875",
   },
   {
     name: "Cot",
