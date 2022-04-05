@@ -2,11 +2,25 @@ import { IApplicationOptions, TeamType, TldType, AppType } from "../models";
 
 export const AppConfig: Array<IApplicationOptions> = [
   {
+    name: "Admin",
+    type: AppType.Api,
+    team: TeamType.Artemis,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=182&branchFilter=9053",
+  },
+  {
     name: "Agency",
     type: AppType.Api,
     team: TeamType.Agent,
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=130&branchFilter=624",
+  },
+  {
+    name: "Agent",
+    type: AppType.Api,
+    team: TeamType.Agent,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=181&branchFilter=8875"
   },
   {
     name: "Audit",
@@ -56,6 +70,13 @@ export const AppConfig: Array<IApplicationOptions> = [
     team: TeamType.Shared,
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=162&branchFilter=6852",
+  },
+  {
+    name: "ExternalLeads",
+    type: AppType.Api,
+    team: TeamType.Wheat,
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=183&branchFilter=9070",
   },
   {
     name: "FastPass",
@@ -179,6 +200,14 @@ export const AppConfig: Array<IApplicationOptions> = [
     team: TeamType.Wheat,
     pipelineUrl:
       "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=145&branchFilter=5416",
+  },
+  {
+    name: "MarketplaceFunc",
+    type: AppType.Api,
+    team: TeamType.Wheat,
+    displayName: "Marketplace Func",
+    pipelineUrl:
+      "https://dev.azure.com/dealerpolicy/DealerPolicy/_build?definitionId=161&branchFilter=6754",
   },
   {
     name: "Secure-Checkout",
